@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Meme Coin On-Chain Forensics Toolkit
 ### 迷因幣鏈上籌碼結構與 First Funder 資金溯源分析工具
 
@@ -225,3 +226,6 @@ my_project/
 - `2_data_processed/batch_funder_engine_v1/` 為過渡期產出的孤兒資料夾（沒有任何現行腳本會再讀寫），已搬到 `_archive/batch_funder_engine_v1_stale_output/`，不影響現有分析結果，僅供追溯用。
 - `export_txt_report.py` / `generate_v2_dashboards.py` / `generate_v2_html_reports.py` 曾一度又回到寫死 Windows 絕對路徑、輸出到 `v2_dashboards` 資料夾的舊版寫法（與本 README 記載的行為不符），導致 `3_reports_txt`、`4_reports_img`、`5_reports_html` 底下同時存在 `v2_dashboards`（舊）與 `funder_tracker_dashboards`（新）兩份重複輸出。已重新套用相對路徑 + UTF-8 修正，舊輸出搬到 `_archive/v2_dashboards_stale_output/`。**若之後再次發現這三支腳本跑出 `v2_dashboards` 資料夾，代表又被改回舊版寫法，需要重新修正。**
 - 新增 `generate_v2_spider_web.py`（First Funder 關聯蜘蛛網，pyvis 互動 HTML），原始版本同樣寫死絕對路徑，已比照其餘 B 管線腳本改為相對路徑並加上 UTF-8 guard。
+=======
+# my_project
+>>>>>>> 81b6f6ba290f6b9b5dcb73d66e2b6cfeaad9ea6b
