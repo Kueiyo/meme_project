@@ -1,0 +1,21 @@
+{
+  "coin": "SHAR",
+  "top50_concentration": 0.993127,
+  "clustering_coefficient": 0.040019,
+  "clustering_details": {
+    "scale_10": 0.040019,
+    "scale_50": 0.040019,
+    "scale_100": 0.040019,
+    "scale_500": 0.040019,
+    "scale_1000": 0.040019
+  },
+  "early_buyers_ratio": 0.02,
+  "early_buyers_details": {
+    "scale_10": 0.02,
+    "scale_50": 0.02,
+    "scale_100": 0.02,
+    "scale_500": 0.02,
+    "scale_1000": 0.02
+  },
+  "cex_wallet_count": 0
+}

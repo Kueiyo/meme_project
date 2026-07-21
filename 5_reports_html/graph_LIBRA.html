@@ -1,0 +1,178 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        
+            <script src="lib/bindings/utils.js"></script>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/dist/vis-network.min.css" integrity="sha512-WgxfT5LWjfszlPHXRmBWHkV2eceiWTOBvrKCNbdgDYTHrT2AeLCGbF4sZlZw3UMN3WtL0tGUoIAKsu8mllg/XA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/vis-network.min.js" integrity="sha512-LnvoEWDFrqGHlHmDD2101OrLcbsfkrzoSpvtSQtxK3RMnRV0eOkhhBN2dXHKRrUU8p2DGRTk35n4O8nWSVe1mQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+            
+        
+<center>
+<h1></h1>
+</center>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+        <link
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
+          crossorigin="anonymous"
+        />
+        <script
+          src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+          crossorigin="anonymous"
+        ></script>
+
+
+        <center>
+          <h1></h1>
+        </center>
+        <style type="text/css">
+
+             #mynetwork {
+                 width: 100%;
+                 height: 100vh;
+                 background-color: #121212;
+                 border: 1px solid lightgray;
+                 position: relative;
+                 float: left;
+             }
+
+             
+
+             
+             #config {
+                 float: left;
+                 width: 400px;
+                 height: 600px;
+             }
+             
+
+             
+        </style>
+    </head>
+
+
+    <body>
+        <div class="card" style="width: 100%">
+            
+            
+            <div id="mynetwork" class="card-body"></div>
+        </div>
+
+        
+        
+            <div id="config"></div>
+        
+
+        <script type="text/javascript">
+
+              // initialize global variables.
+              var edges;
+              var nodes;
+              var allNodes;
+              var allEdges;
+              var nodeColors;
+              var originalNodes;
+              var network;
+              var container;
+              var options, data;
+              var filter = {
+                  item : '',
+                  property : '',
+                  value : []
+              };
+
+              
+
+              
+
+              // This method is responsible for drawing the graph, returns the drawn network
+              function drawGraph() {
+                  var container = document.getElementById('mynetwork');
+
+                  
+
+                  // parsing and collecting nodes and edges from the python
+                  nodes = new vis.DataSet([{"borderWidth": 2, "color": "#00BFFF", "font": {"color": "#E0E0E0"}, "id": "2PXSy399SrN4ShvHnWNNcjaxZSg5AV7pdzrkitRPkCYr", "label": "2PXS...kCYr", "shape": "dot", "size": 18, "title": "\u3010\u5b8c\u6574\u9322\u5305\u5730\u5740\u3011\n2PXSy399SrN4ShvHnWNNcjaxZSg5AV7pdzrkitRPkCYr\n\n\ud83d\udd17 \u95dc\u806f\u5927\u6236\u6578: 1 \u4eba"}, {"borderWidth": 2, "color": "#00BFFF", "font": {"color": "#E0E0E0"}, "id": "D2AiNgk4KQpSBniJUdNGvPfugNyb8skxbceBQhfBFrwC", "label": "D2Ai...FrwC", "shape": "dot", "size": 114, "title": "\u3010\u5b8c\u6574\u9322\u5305\u5730\u5740\u3011\nD2AiNgk4KQpSBniJUdNGvPfugNyb8skxbceBQhfBFrwC\n\n\ud83d\udd17 \u95dc\u806f\u5927\u6236\u6578: 33 \u4eba"}, {"borderWidth": 2, "color": "#00BFFF", "font": {"color": "#E0E0E0"}, "id": "5TrSTsjGokXec5eenR75HrLvRmPkkz8Uh23Y7p4tp31F", "label": "5TrS...p31F", "shape": "dot", "size": 18, "title": "\u3010\u5b8c\u6574\u9322\u5305\u5730\u5740\u3011\n5TrSTsjGokXec5eenR75HrLvRmPkkz8Uh23Y7p4tp31F\n\n\ud83d\udd17 \u95dc\u806f\u5927\u6236\u6578: 1 \u4eba"}, {"borderWidth": 2, "color": "#00BFFF", "font": {"color": "#E0E0E0"}, "id": "2zMDeQ9ytd9awDNkjMQ251UWbMMYtt6BSB6DhrwehgZ1", "label": "2zMD...hgZ1", "shape": "dot", "size": 18, "title": "\u3010\u5b8c\u6574\u9322\u5305\u5730\u5740\u3011\n2zMDeQ9ytd9awDNkjMQ251UWbMMYtt6BSB6DhrwehgZ1\n\n\ud83d\udd17 \u95dc\u806f\u5927\u6236\u6578: 1 \u4eba"}, {"borderWidth": 2, "color": "#00BFFF", "font": {"color": "#E0E0E0"}, "id": "2ATyw2zr45qEFzwANYr8jxWSLoctbxwimSnCfwRQN3LW", "label": "2ATy...N3LW", "shape": "dot", "size": 18, "title": "\u3010\u5b8c\u6574\u9322\u5305\u5730\u5740\u3011\n2ATyw2zr45qEFzwANYr8jxWSLoctbxwimSnCfwRQN3LW\n\n\ud83d\udd17 \u95dc\u806f\u5927\u6236\u6578: 1 \u4eba"}, {"borderWidth": 2, "color": "#00BFFF", "font": {"color": "#E0E0E0"}, "id": "YobGt6J7YDLUbdV9cCb8hoNUxf5PAoCmqf4SZW2Fdf8", "label": "YobG...Fdf8", "shape": "dot", "size": 18, "title": "\u3010\u5b8c\u6574\u9322\u5305\u5730\u5740\u3011\nYobGt6J7YDLUbdV9cCb8hoNUxf5PAoCmqf4SZW2Fdf8\n\n\ud83d\udd17 \u95dc\u806f\u5927\u6236\u6578: 1 \u4eba"}, {"borderWidth": 2, "color": "#00BFFF", "font": {"color": "#E0E0E0"}, "id": "2xcraqVQgV6ArWqjwXXCmXbpzDkgCg7sMHAk5zJcLuTk", "label": "2xcr...LuTk", "shape": "dot", "size": 18, "title": "\u3010\u5b8c\u6574\u9322\u5305\u5730\u5740\u3011\n2xcraqVQgV6ArWqjwXXCmXbpzDkgCg7sMHAk5zJcLuTk\n\n\ud83d\udd17 \u95dc\u806f\u5927\u6236\u6578: 1 \u4eba"}, {"borderWidth": 2, "color": "#00BFFF", "font": {"color": "#E0E0E0"}, "id": "EBdtVh1HRewsXn3gRrM8NV5qqixJVh63B7E7scXHe3D", "label": "EBdt...He3D", "shape": "dot", "size": 18, "title": "\u3010\u5b8c\u6574\u9322\u5305\u5730\u5740\u3011\nEBdtVh1HRewsXn3gRrM8NV5qqixJVh63B7E7scXHe3D\n\n\ud83d\udd17 \u95dc\u806f\u5927\u6236\u6578: 1 \u4eba"}, {"borderWidth": 2, "color": "#00BFFF", "font": {"color": "#E0E0E0"}, "id": "9h1Ct4sh7fBg3qksCEHDbFDhih6w84dwDX4H3vi9HWnw", "label": "9h1C...HWnw", "shape": "dot", "size": 18, "title": "\u3010\u5b8c\u6574\u9322\u5305\u5730\u5740\u3011\n9h1Ct4sh7fBg3qksCEHDbFDhih6w84dwDX4H3vi9HWnw\n\n\ud83d\udd17 \u95dc\u806f\u5927\u6236\u6578: 1 \u4eba"}, {"borderWidth": 2, "color": "#00BFFF", "font": {"color": "#E0E0E0"}, "id": "2Bc6v346LAohN8TiaWXCKmkhGnFCVTu66voW8Cke8eP6", "label": "2Bc6...8eP6", "shape": "dot", "size": 18, "title": "\u3010\u5b8c\u6574\u9322\u5305\u5730\u5740\u3011\n2Bc6v346LAohN8TiaWXCKmkhGnFCVTu66voW8Cke8eP6\n\n\ud83d\udd17 \u95dc\u806f\u5927\u6236\u6578: 1 \u4eba"}, {"borderWidth": 2, "color": "#00BFFF", "font": {"color": "#E0E0E0"}, "id": "BQo9fbUYZdpemiQ5tLoVL8tdBNJmBRW43hkmcLft9Xw", "label": "BQo9...t9Xw", "shape": "dot", "size": 18, "title": "\u3010\u5b8c\u6574\u9322\u5305\u5730\u5740\u3011\nBQo9fbUYZdpemiQ5tLoVL8tdBNJmBRW43hkmcLft9Xw\n\n\ud83d\udd17 \u95dc\u806f\u5927\u6236\u6578: 1 \u4eba"}, {"borderWidth": 2, "color": "#00BFFF", "font": {"color": "#E0E0E0"}, "id": "6Bx3iwxQvrmLpXAZBbruejxEHxQgF4LsYnYUKQu6r2Do", "label": "6Bx3...r2Do", "shape": "dot", "size": 18, "title": "\u3010\u5b8c\u6574\u9322\u5305\u5730\u5740\u3011\n6Bx3iwxQvrmLpXAZBbruejxEHxQgF4LsYnYUKQu6r2Do\n\n\ud83d\udd17 \u95dc\u806f\u5927\u6236\u6578: 1 \u4eba"}, {"borderWidth": 2, "color": "#00BFFF", "font": {"color": "#E0E0E0"}, "id": "2wNfUs9DY4g4gWvDjxqjDG8mSVw3dsvBdsQTS7Q9Yt5m", "label": "2wNf...Yt5m", "shape": "dot", "size": 18, "title": "\u3010\u5b8c\u6574\u9322\u5305\u5730\u5740\u3011\n2wNfUs9DY4g4gWvDjxqjDG8mSVw3dsvBdsQTS7Q9Yt5m\n\n\ud83d\udd17 \u95dc\u806f\u5927\u6236\u6578: 1 \u4eba"}, {"borderWidth": 2, "color": "#00BFFF", "font": {"color": "#E0E0E0"}, "id": "2VbCPK1ZFMXzVbNPsU9f5u42ekrs9nK7g1aciD6tf5Rc", "label": "2VbC...f5Rc", "shape": "dot", "size": 18, "title": "\u3010\u5b8c\u6574\u9322\u5305\u5730\u5740\u3011\n2VbCPK1ZFMXzVbNPsU9f5u42ekrs9nK7g1aciD6tf5Rc\n\n\ud83d\udd17 \u95dc\u806f\u5927\u6236\u6578: 1 \u4eba"}, {"borderWidth": 2, "color": "#00BFFF", "font": {"color": "#E0E0E0"}, "id": "2yRgQt3kFUmY8LdGZLUbaQbpwkDedPugryYhrEFQ9ZZ8", "label": "2yRg...9ZZ8", "shape": "dot", "size": 18, "title": "\u3010\u5b8c\u6574\u9322\u5305\u5730\u5740\u3011\n2yRgQt3kFUmY8LdGZLUbaQbpwkDedPugryYhrEFQ9ZZ8\n\n\ud83d\udd17 \u95dc\u806f\u5927\u6236\u6578: 1 \u4eba"}, {"borderWidth": 2, "color": "#00BFFF", "font": {"color": "#E0E0E0"}, "id": "3Eb8XXyCymf22QLrqVgo75wPa6HEbxXEcu7EiLr8jR6J", "label": "3Eb8...jR6J", "shape": "dot", "size": 18, "title": "\u3010\u5b8c\u6574\u9322\u5305\u5730\u5740\u3011\n3Eb8XXyCymf22QLrqVgo75wPa6HEbxXEcu7EiLr8jR6J\n\n\ud83d\udd17 \u95dc\u806f\u5927\u6236\u6578: 1 \u4eba"}, {"borderWidth": 2, "color": "#00BFFF", "font": {"color": "#E0E0E0"}, "id": "jbM76pQKXzNiHJe8Sush1nQHXHdBPFgpC9cKTm4LZ22", "label": "jbM7...LZ22", "shape": "dot", "size": 18, "title": "\u3010\u5b8c\u6574\u9322\u5305\u5730\u5740\u3011\njbM76pQKXzNiHJe8Sush1nQHXHdBPFgpC9cKTm4LZ22\n\n\ud83d\udd17 \u95dc\u806f\u5927\u6236\u6578: 1 \u4eba"}, {"borderWidth": 2, "color": "#00BFFF", "font": {"color": "#E0E0E0"}, "id": "95NUCCwo34sGTuhoJj3T8ux6wbraiofVn7P5BPA8nvoi", "label": "95NU...nvoi", "shape": "dot", "size": 18, "title": "\u3010\u5b8c\u6574\u9322\u5305\u5730\u5740\u3011\n95NUCCwo34sGTuhoJj3T8ux6wbraiofVn7P5BPA8nvoi\n\n\ud83d\udd17 \u95dc\u806f\u5927\u6236\u6578: 1 \u4eba"}, {"borderWidth": 2, "color": "#00BFFF", "font": {"color": "#E0E0E0"}, "id": "2kkWB7Wsyx7ndXySKgjJYNuSvkcL1wLPhPjkHyKha7Hk", "label": "2kkW...a7Hk", "shape": "dot", "size": 18, "title": "\u3010\u5b8c\u6574\u9322\u5305\u5730\u5740\u3011\n2kkWB7Wsyx7ndXySKgjJYNuSvkcL1wLPhPjkHyKha7Hk\n\n\ud83d\udd17 \u95dc\u806f\u5927\u6236\u6578: 1 \u4eba"}, {"borderWidth": 2, "color": "#00BFFF", "font": {"color": "#E0E0E0"}, "id": "3NXYVPipUVKRsJRYRoxn8scmfEhYZSqUBj8H1HLnG1EF", "label": "3NXY...G1EF", "shape": "dot", "size": 18, "title": "\u3010\u5b8c\u6574\u9322\u5305\u5730\u5740\u3011\n3NXYVPipUVKRsJRYRoxn8scmfEhYZSqUBj8H1HLnG1EF\n\n\ud83d\udd17 \u95dc\u806f\u5927\u6236\u6578: 1 \u4eba"}, {"borderWidth": 2, "color": "#00BFFF", "font": {"color": "#E0E0E0"}, "id": "E7JJ9BvxfjSJpvQRPmMXoB3y93iw52sN2CSWYHER8SKD", "label": "E7JJ...8SKD", "shape": "dot", "size": 18, "title": "\u3010\u5b8c\u6574\u9322\u5305\u5730\u5740\u3011\nE7JJ9BvxfjSJpvQRPmMXoB3y93iw52sN2CSWYHER8SKD\n\n\ud83d\udd17 \u95dc\u806f\u5927\u6236\u6578: 1 \u4eba"}, {"borderWidth": 2, "color": "#00BFFF", "font": {"color": "#E0E0E0"}, "id": "3JYExsy4k32frqg1YwzVemWDyjaNE9r9FogqrJcqxJPi", "label": "3JYE...xJPi", "shape": "dot", "size": 18, "title": "\u3010\u5b8c\u6574\u9322\u5305\u5730\u5740\u3011\n3JYExsy4k32frqg1YwzVemWDyjaNE9r9FogqrJcqxJPi\n\n\ud83d\udd17 \u95dc\u806f\u5927\u6236\u6578: 1 \u4eba"}, {"borderWidth": 2, "color": "#00BFFF", "font": {"color": "#E0E0E0"}, "id": "SDpA6AkCWGiets4iogqMMcK2tuY9mM24ebqvcaAy3KN", "label": "SDpA...y3KN", "shape": "dot", "size": 18, "title": "\u3010\u5b8c\u6574\u9322\u5305\u5730\u5740\u3011\nSDpA6AkCWGiets4iogqMMcK2tuY9mM24ebqvcaAy3KN\n\n\ud83d\udd17 \u95dc\u806f\u5927\u6236\u6578: 1 \u4eba"}, {"borderWidth": 2, "color": "#00BFFF", "font": {"color": "#E0E0E0"}, "id": "8uMM9eNzMDk6R7Kvm1SbJPnoHjW48wkWLMJ76ZvNLHvj", "label": "8uMM...LHvj", "shape": "dot", "size": 18, "title": "\u3010\u5b8c\u6574\u9322\u5305\u5730\u5740\u3011\n8uMM9eNzMDk6R7Kvm1SbJPnoHjW48wkWLMJ76ZvNLHvj\n\n\ud83d\udd17 \u95dc\u806f\u5927\u6236\u6578: 1 \u4eba"}, {"borderWidth": 2, "color": "#00BFFF", "font": {"color": "#E0E0E0"}, "id": "NaF5yKaDnzRZV9A9yCh4juDfhyyfvmbwaSeT7FDCoXn", "label": "NaF5...CoXn", "shape": "dot", "size": 18, "title": "\u3010\u5b8c\u6574\u9322\u5305\u5730\u5740\u3011\nNaF5yKaDnzRZV9A9yCh4juDfhyyfvmbwaSeT7FDCoXn\n\n\ud83d\udd17 \u95dc\u806f\u5927\u6236\u6578: 1 \u4eba"}, {"borderWidth": 2, "color": "#00BFFF", "font": {"color": "#E0E0E0"}, "id": "39R5u1vZNGZ7HmCqSpZBgPyGb6JbY6AmTjQHz3AFZbNQ", "label": "39R5...ZbNQ", "shape": "dot", "size": 18, "title": "\u3010\u5b8c\u6574\u9322\u5305\u5730\u5740\u3011\n39R5u1vZNGZ7HmCqSpZBgPyGb6JbY6AmTjQHz3AFZbNQ\n\n\ud83d\udd17 \u95dc\u806f\u5927\u6236\u6578: 1 \u4eba"}, {"borderWidth": 2, "color": "#00BFFF", "font": {"color": "#E0E0E0"}, "id": "6xiyizRa6nFd6djQb8CDF8gLLKEjmu3bbZNKfhudKRzN", "label": "6xiy...KRzN", "shape": "dot", "size": 18, "title": "\u3010\u5b8c\u6574\u9322\u5305\u5730\u5740\u3011\n6xiyizRa6nFd6djQb8CDF8gLLKEjmu3bbZNKfhudKRzN\n\n\ud83d\udd17 \u95dc\u806f\u5927\u6236\u6578: 1 \u4eba"}, {"borderWidth": 2, "color": "#00BFFF", "font": {"color": "#E0E0E0"}, "id": "2WmW2JbnV4ffwfWRZ7KWzggQ7LXDQup1DhawtTZpHnMD", "label": "2WmW...HnMD", "shape": "dot", "size": 18, "title": "\u3010\u5b8c\u6574\u9322\u5305\u5730\u5740\u3011\n2WmW2JbnV4ffwfWRZ7KWzggQ7LXDQup1DhawtTZpHnMD\n\n\ud83d\udd17 \u95dc\u806f\u5927\u6236\u6578: 1 \u4eba"}, {"borderWidth": 2, "color": "#00BFFF", "font": {"color": "#E0E0E0"}, "id": "3PbLLzgCNMkVi7URgocEHBQ9hzytfD9fTvoQs5eqzDXJ", "label": "3PbL...zDXJ", "shape": "dot", "size": 18, "title": "\u3010\u5b8c\u6574\u9322\u5305\u5730\u5740\u3011\n3PbLLzgCNMkVi7URgocEHBQ9hzytfD9fTvoQs5eqzDXJ\n\n\ud83d\udd17 \u95dc\u806f\u5927\u6236\u6578: 1 \u4eba"}, {"borderWidth": 2, "color": "#00BFFF", "font": {"color": "#E0E0E0"}, "id": "2dWjFteXMiseCRNuGgFEbD4PwEQw7aCxwXZfktdfaLeX", "label": "2dWj...aLeX", "shape": "dot", "size": 21, "title": "\u3010\u5b8c\u6574\u9322\u5305\u5730\u5740\u3011\n2dWjFteXMiseCRNuGgFEbD4PwEQw7aCxwXZfktdfaLeX\n\n\ud83d\udd17 \u95dc\u806f\u5927\u6236\u6578: 2 \u4eba"}, {"borderWidth": 2, "color": "#00BFFF", "font": {"color": "#E0E0E0"}, "id": "6MmkmwkSuxgzGJYn6WVzRfjaHvkvbRamoCPUhCQWCeQ1", "label": "6Mmk...CeQ1", "shape": "dot", "size": 18, "title": "\u3010\u5b8c\u6574\u9322\u5305\u5730\u5740\u3011\n6MmkmwkSuxgzGJYn6WVzRfjaHvkvbRamoCPUhCQWCeQ1\n\n\ud83d\udd17 \u95dc\u806f\u5927\u6236\u6578: 1 \u4eba"}, {"borderWidth": 2, "color": "#00BFFF", "font": {"color": "#E0E0E0"}, "id": "HNpYhqN7YP4LEUVSx33i4SQHNGfxFydABpoXkTLgALDV", "label": "HNpY...ALDV", "shape": "dot", "size": 21, "title": "\u3010\u5b8c\u6574\u9322\u5305\u5730\u5740\u3011\nHNpYhqN7YP4LEUVSx33i4SQHNGfxFydABpoXkTLgALDV\n\n\ud83d\udd17 \u95dc\u806f\u5927\u6236\u6578: 2 \u4eba"}, {"borderWidth": 2, "color": "#00BFFF", "font": {"color": "#E0E0E0"}, "id": "nuJt19C8JXkE4J87yE13j48fANZzaNv6TYtkQVQNBfz", "label": "nuJt...NBfz", "shape": "dot", "size": 18, "title": "\u3010\u5b8c\u6574\u9322\u5305\u5730\u5740\u3011\nnuJt19C8JXkE4J87yE13j48fANZzaNv6TYtkQVQNBfz\n\n\ud83d\udd17 \u95dc\u806f\u5927\u6236\u6578: 1 \u4eba"}, {"borderWidth": 2, "color": "#00BFFF", "font": {"color": "#E0E0E0"}, "id": "NiXYUAu8oduiyvzoWT5kikoudvW1fL9XGbxCq8ukRTt", "label": "NiXY...kRTt", "shape": "dot", "size": 18, "title": "\u3010\u5b8c\u6574\u9322\u5305\u5730\u5740\u3011\nNiXYUAu8oduiyvzoWT5kikoudvW1fL9XGbxCq8ukRTt\n\n\ud83d\udd17 \u95dc\u806f\u5927\u6236\u6578: 1 \u4eba"}, {"borderWidth": 2, "color": "#00BFFF", "font": {"color": "#E0E0E0"}, "id": "4v4D9XZKpfnBoorEddV2miNcw6kgZEiuyFGsMKgsrfbz", "label": "4v4D...rfbz", "shape": "dot", "size": 15, "title": "\u3010\u5b8c\u6574\u9322\u5305\u5730\u5740\u3011\n4v4D9XZKpfnBoorEddV2miNcw6kgZEiuyFGsMKgsrfbz\n\n\ud83d\udd17 \u95dc\u806f\u5927\u6236\u6578: 0 \u4eba"}, {"borderWidth": 2, "color": "#00BFFF", "font": {"color": "#E0E0E0"}, "id": "ETYBFqkoQ7vwQgc2BPwQJh2JjVGyD9jk5w6jcfRTHkkv", "label": "ETYB...Hkkv", "shape": "dot", "size": 15, "title": "\u3010\u5b8c\u6574\u9322\u5305\u5730\u5740\u3011\nETYBFqkoQ7vwQgc2BPwQJh2JjVGyD9jk5w6jcfRTHkkv\n\n\ud83d\udd17 \u95dc\u806f\u5927\u6236\u6578: 0 \u4eba"}, {"borderWidth": 2, "color": "#00BFFF", "font": {"color": "#E0E0E0"}, "id": "4VsQdpxkU21h86qC6JRR4SqnuRT6SCdg5619KA5JMkW9", "label": "4VsQ...MkW9", "shape": "dot", "size": 15, "title": "\u3010\u5b8c\u6574\u9322\u5305\u5730\u5740\u3011\n4VsQdpxkU21h86qC6JRR4SqnuRT6SCdg5619KA5JMkW9\n\n\ud83d\udd17 \u95dc\u806f\u5927\u6236\u6578: 0 \u4eba"}, {"borderWidth": 2, "color": "#00BFFF", "font": {"color": "#E0E0E0"}, "id": "9jAiuHR2pwn615dLhUd18zPtm15PuDVrgXoWRYcUfDzJ", "label": "9jAi...fDzJ", "shape": "dot", "size": 15, "title": "\u3010\u5b8c\u6574\u9322\u5305\u5730\u5740\u3011\n9jAiuHR2pwn615dLhUd18zPtm15PuDVrgXoWRYcUfDzJ\n\n\ud83d\udd17 \u95dc\u806f\u5927\u6236\u6578: 0 \u4eba"}, {"borderWidth": 2, "color": "#00BFFF", "font": {"color": "#E0E0E0"}, "id": "8RYPsXzPQbFmaNZ7furAwkPhY8BB6tiPSzMYjjdANBd5", "label": "8RYP...NBd5", "shape": "dot", "size": 15, "title": "\u3010\u5b8c\u6574\u9322\u5305\u5730\u5740\u3011\n8RYPsXzPQbFmaNZ7furAwkPhY8BB6tiPSzMYjjdANBd5\n\n\ud83d\udd17 \u95dc\u806f\u5927\u6236\u6578: 0 \u4eba"}, {"borderWidth": 2, "color": "#00BFFF", "font": {"color": "#E0E0E0"}, "id": "BJhWKG7kSqzG6fjQtEmvjBYpoCgEJVENFq1DN1mxFHH8", "label": "BJhW...FHH8", "shape": "dot", "size": 15, "title": "\u3010\u5b8c\u6574\u9322\u5305\u5730\u5740\u3011\nBJhWKG7kSqzG6fjQtEmvjBYpoCgEJVENFq1DN1mxFHH8\n\n\ud83d\udd17 \u95dc\u806f\u5927\u6236\u6578: 0 \u4eba"}, {"borderWidth": 2, "color": "#00BFFF", "font": {"color": "#E0E0E0"}, "id": "22z1DJ3QwBHRLxKWwbef3qSSA8kbJMq9X1pdzpKQwRPX", "label": "22z1...wRPX", "shape": "dot", "size": 15, "title": "\u3010\u5b8c\u6574\u9322\u5305\u5730\u5740\u3011\n22z1DJ3QwBHRLxKWwbef3qSSA8kbJMq9X1pdzpKQwRPX\n\n\ud83d\udd17 \u95dc\u806f\u5927\u6236\u6578: 0 \u4eba"}, {"borderWidth": 2, "color": "#00BFFF", "font": {"color": "#E0E0E0"}, "id": "BqskZphcPyoiP5qU5fGjtZRFNAJLNxWkbouwHV74dude", "label": "Bqsk...dude", "shape": "dot", "size": 15, "title": "\u3010\u5b8c\u6574\u9322\u5305\u5730\u5740\u3011\nBqskZphcPyoiP5qU5fGjtZRFNAJLNxWkbouwHV74dude\n\n\ud83d\udd17 \u95dc\u806f\u5927\u6236\u6578: 0 \u4eba"}, {"borderWidth": 2, "color": "#00BFFF", "font": {"color": "#E0E0E0"}, "id": "312oKEFzxTvCAZ9Nphg6eSa6rWnWHbSHsLJQT8JPGCJU", "label": "312o...GCJU", "shape": "dot", "size": 15, "title": "\u3010\u5b8c\u6574\u9322\u5305\u5730\u5740\u3011\n312oKEFzxTvCAZ9Nphg6eSa6rWnWHbSHsLJQT8JPGCJU\n\n\ud83d\udd17 \u95dc\u806f\u5927\u6236\u6578: 0 \u4eba"}, {"borderWidth": 2, "color": "#00BFFF", "font": {"color": "#E0E0E0"}, "id": "CkcELAYKDMVTNSFTHeeEVf7iSEsLg4vyjdKULF7XbPL7", "label": "CkcE...bPL7", "shape": "dot", "size": 15, "title": "\u3010\u5b8c\u6574\u9322\u5305\u5730\u5740\u3011\nCkcELAYKDMVTNSFTHeeEVf7iSEsLg4vyjdKULF7XbPL7\n\n\ud83d\udd17 \u95dc\u806f\u5927\u6236\u6578: 0 \u4eba"}, {"borderWidth": 2, "color": "#00BFFF", "font": {"color": "#E0E0E0"}, "id": "FYSKHcLhjUPr7tqMfGTTwe6NXVVym4NhdcV9Te9bpR3R", "label": "FYSK...pR3R", "shape": "dot", "size": 15, "title": "\u3010\u5b8c\u6574\u9322\u5305\u5730\u5740\u3011\nFYSKHcLhjUPr7tqMfGTTwe6NXVVym4NhdcV9Te9bpR3R\n\n\ud83d\udd17 \u95dc\u806f\u5927\u6236\u6578: 0 \u4eba"}, {"borderWidth": 2, "color": "#00BFFF", "font": {"color": "#E0E0E0"}, "id": "bF33rkxD2nhUuWPGLqWfJaCqqKxj6UEwmHM118Zy3zL", "label": "bF33...y3zL", "shape": "dot", "size": 15, "title": "\u3010\u5b8c\u6574\u9322\u5305\u5730\u5740\u3011\nbF33rkxD2nhUuWPGLqWfJaCqqKxj6UEwmHM118Zy3zL\n\n\ud83d\udd17 \u95dc\u806f\u5927\u6236\u6578: 0 \u4eba"}, {"borderWidth": 2, "color": "#00BFFF", "font": {"color": "#E0E0E0"}, "id": "2Jvw6HcYg4fi7uk2X37Hx5FuuKUatyGNZzcmDkKcaJKb", "label": "2Jvw...aJKb", "shape": "dot", "size": 15, "title": "\u3010\u5b8c\u6574\u9322\u5305\u5730\u5740\u3011\n2Jvw6HcYg4fi7uk2X37Hx5FuuKUatyGNZzcmDkKcaJKb\n\n\ud83d\udd17 \u95dc\u806f\u5927\u6236\u6578: 0 \u4eba"}, {"borderWidth": 2, "color": "#00BFFF", "font": {"color": "#E0E0E0"}, "id": "3GJX75ZyUeY8xEmKxcwzFfbHEuzFWZE94g6FrrFr2RV2", "label": "3GJX...2RV2", "shape": "dot", "size": 15, "title": "\u3010\u5b8c\u6574\u9322\u5305\u5730\u5740\u3011\n3GJX75ZyUeY8xEmKxcwzFfbHEuzFWZE94g6FrrFr2RV2\n\n\ud83d\udd17 \u95dc\u806f\u5927\u6236\u6578: 0 \u4eba"}, {"borderWidth": 2, "color": "#00BFFF", "font": {"color": "#E0E0E0"}, "id": "EeCHjpk315BVrwQZRtyEinMsFPXmxGqHJiAU6PJSCG8J", "label": "EeCH...CG8J", "shape": "dot", "size": 15, "title": "\u3010\u5b8c\u6574\u9322\u5305\u5730\u5740\u3011\nEeCHjpk315BVrwQZRtyEinMsFPXmxGqHJiAU6PJSCG8J\n\n\ud83d\udd17 \u95dc\u806f\u5927\u6236\u6578: 0 \u4eba"}, {"borderWidth": 2, "color": "#00BFFF", "font": {"color": "#E0E0E0"}, "id": "14cHzrfv5Fh8rT2sU69EW4TvNaRjHakGqrFbA7cE32W5", "label": "14cH...32W5", "shape": "dot", "size": 15, "title": "\u3010\u5b8c\u6574\u9322\u5305\u5730\u5740\u3011\n14cHzrfv5Fh8rT2sU69EW4TvNaRjHakGqrFbA7cE32W5\n\n\ud83d\udd17 \u95dc\u806f\u5927\u6236\u6578: 0 \u4eba"}]);
+                  edges = new vis.DataSet([{"from": "2PXSy399SrN4ShvHnWNNcjaxZSg5AV7pdzrkitRPkCYr", "to": "D2AiNgk4KQpSBniJUdNGvPfugNyb8skxbceBQhfBFrwC", "width": 1}, {"from": "5TrSTsjGokXec5eenR75HrLvRmPkkz8Uh23Y7p4tp31F", "to": "D2AiNgk4KQpSBniJUdNGvPfugNyb8skxbceBQhfBFrwC", "width": 1}, {"from": "2zMDeQ9ytd9awDNkjMQ251UWbMMYtt6BSB6DhrwehgZ1", "to": "D2AiNgk4KQpSBniJUdNGvPfugNyb8skxbceBQhfBFrwC", "width": 1}, {"from": "2ATyw2zr45qEFzwANYr8jxWSLoctbxwimSnCfwRQN3LW", "to": "D2AiNgk4KQpSBniJUdNGvPfugNyb8skxbceBQhfBFrwC", "width": 1}, {"from": "YobGt6J7YDLUbdV9cCb8hoNUxf5PAoCmqf4SZW2Fdf8", "to": "D2AiNgk4KQpSBniJUdNGvPfugNyb8skxbceBQhfBFrwC", "width": 1}, {"from": "2xcraqVQgV6ArWqjwXXCmXbpzDkgCg7sMHAk5zJcLuTk", "to": "D2AiNgk4KQpSBniJUdNGvPfugNyb8skxbceBQhfBFrwC", "width": 1}, {"from": "EBdtVh1HRewsXn3gRrM8NV5qqixJVh63B7E7scXHe3D", "to": "D2AiNgk4KQpSBniJUdNGvPfugNyb8skxbceBQhfBFrwC", "width": 1}, {"from": "9h1Ct4sh7fBg3qksCEHDbFDhih6w84dwDX4H3vi9HWnw", "to": "D2AiNgk4KQpSBniJUdNGvPfugNyb8skxbceBQhfBFrwC", "width": 1}, {"from": "2Bc6v346LAohN8TiaWXCKmkhGnFCVTu66voW8Cke8eP6", "to": "D2AiNgk4KQpSBniJUdNGvPfugNyb8skxbceBQhfBFrwC", "width": 1}, {"from": "BQo9fbUYZdpemiQ5tLoVL8tdBNJmBRW43hkmcLft9Xw", "to": "D2AiNgk4KQpSBniJUdNGvPfugNyb8skxbceBQhfBFrwC", "width": 1}, {"from": "6Bx3iwxQvrmLpXAZBbruejxEHxQgF4LsYnYUKQu6r2Do", "to": "D2AiNgk4KQpSBniJUdNGvPfugNyb8skxbceBQhfBFrwC", "width": 1}, {"from": "2wNfUs9DY4g4gWvDjxqjDG8mSVw3dsvBdsQTS7Q9Yt5m", "to": "D2AiNgk4KQpSBniJUdNGvPfugNyb8skxbceBQhfBFrwC", "width": 1}, {"from": "2VbCPK1ZFMXzVbNPsU9f5u42ekrs9nK7g1aciD6tf5Rc", "to": "D2AiNgk4KQpSBniJUdNGvPfugNyb8skxbceBQhfBFrwC", "width": 1}, {"from": "2yRgQt3kFUmY8LdGZLUbaQbpwkDedPugryYhrEFQ9ZZ8", "to": "D2AiNgk4KQpSBniJUdNGvPfugNyb8skxbceBQhfBFrwC", "width": 1}, {"from": "3Eb8XXyCymf22QLrqVgo75wPa6HEbxXEcu7EiLr8jR6J", "to": "D2AiNgk4KQpSBniJUdNGvPfugNyb8skxbceBQhfBFrwC", "width": 1}, {"from": "jbM76pQKXzNiHJe8Sush1nQHXHdBPFgpC9cKTm4LZ22", "to": "D2AiNgk4KQpSBniJUdNGvPfugNyb8skxbceBQhfBFrwC", "width": 1}, {"from": "95NUCCwo34sGTuhoJj3T8ux6wbraiofVn7P5BPA8nvoi", "to": "D2AiNgk4KQpSBniJUdNGvPfugNyb8skxbceBQhfBFrwC", "width": 1}, {"from": "2kkWB7Wsyx7ndXySKgjJYNuSvkcL1wLPhPjkHyKha7Hk", "to": "D2AiNgk4KQpSBniJUdNGvPfugNyb8skxbceBQhfBFrwC", "width": 1}, {"from": "3NXYVPipUVKRsJRYRoxn8scmfEhYZSqUBj8H1HLnG1EF", "to": "D2AiNgk4KQpSBniJUdNGvPfugNyb8skxbceBQhfBFrwC", "width": 1}, {"from": "E7JJ9BvxfjSJpvQRPmMXoB3y93iw52sN2CSWYHER8SKD", "to": "D2AiNgk4KQpSBniJUdNGvPfugNyb8skxbceBQhfBFrwC", "width": 1}, {"from": "3JYExsy4k32frqg1YwzVemWDyjaNE9r9FogqrJcqxJPi", "to": "D2AiNgk4KQpSBniJUdNGvPfugNyb8skxbceBQhfBFrwC", "width": 1}, {"from": "SDpA6AkCWGiets4iogqMMcK2tuY9mM24ebqvcaAy3KN", "to": "D2AiNgk4KQpSBniJUdNGvPfugNyb8skxbceBQhfBFrwC", "width": 1}, {"from": "8uMM9eNzMDk6R7Kvm1SbJPnoHjW48wkWLMJ76ZvNLHvj", "to": "D2AiNgk4KQpSBniJUdNGvPfugNyb8skxbceBQhfBFrwC", "width": 1}, {"from": "NaF5yKaDnzRZV9A9yCh4juDfhyyfvmbwaSeT7FDCoXn", "to": "D2AiNgk4KQpSBniJUdNGvPfugNyb8skxbceBQhfBFrwC", "width": 1}, {"from": "39R5u1vZNGZ7HmCqSpZBgPyGb6JbY6AmTjQHz3AFZbNQ", "to": "D2AiNgk4KQpSBniJUdNGvPfugNyb8skxbceBQhfBFrwC", "width": 1}, {"from": "6xiyizRa6nFd6djQb8CDF8gLLKEjmu3bbZNKfhudKRzN", "to": "D2AiNgk4KQpSBniJUdNGvPfugNyb8skxbceBQhfBFrwC", "width": 1}, {"from": "D2AiNgk4KQpSBniJUdNGvPfugNyb8skxbceBQhfBFrwC", "to": "2WmW2JbnV4ffwfWRZ7KWzggQ7LXDQup1DhawtTZpHnMD", "width": 1}, {"from": "D2AiNgk4KQpSBniJUdNGvPfugNyb8skxbceBQhfBFrwC", "to": "3PbLLzgCNMkVi7URgocEHBQ9hzytfD9fTvoQs5eqzDXJ", "width": 1}, {"from": "D2AiNgk4KQpSBniJUdNGvPfugNyb8skxbceBQhfBFrwC", "to": "2dWjFteXMiseCRNuGgFEbD4PwEQw7aCxwXZfktdfaLeX", "width": 1}, {"from": "D2AiNgk4KQpSBniJUdNGvPfugNyb8skxbceBQhfBFrwC", "to": "6MmkmwkSuxgzGJYn6WVzRfjaHvkvbRamoCPUhCQWCeQ1", "width": 1}, {"from": "D2AiNgk4KQpSBniJUdNGvPfugNyb8skxbceBQhfBFrwC", "to": "HNpYhqN7YP4LEUVSx33i4SQHNGfxFydABpoXkTLgALDV", "width": 1}, {"from": "D2AiNgk4KQpSBniJUdNGvPfugNyb8skxbceBQhfBFrwC", "to": "nuJt19C8JXkE4J87yE13j48fANZzaNv6TYtkQVQNBfz", "width": 1}, {"from": "D2AiNgk4KQpSBniJUdNGvPfugNyb8skxbceBQhfBFrwC", "to": "NiXYUAu8oduiyvzoWT5kikoudvW1fL9XGbxCq8ukRTt", "width": 1}, {"from": "2dWjFteXMiseCRNuGgFEbD4PwEQw7aCxwXZfktdfaLeX", "to": "HNpYhqN7YP4LEUVSx33i4SQHNGfxFydABpoXkTLgALDV", "width": 1}]);
+
+                  nodeColors = {};
+                  allNodes = nodes.get({ returnType: "Object" });
+                  for (nodeId in allNodes) {
+                    nodeColors[nodeId] = allNodes[nodeId].color;
+                  }
+                  allEdges = edges.get({ returnType: "Object" });
+                  // adding nodes and edges to the graph
+                  data = {nodes: nodes, edges: edges};
+
+                  var options = {
+    "configure": {
+        "enabled": true,
+        "filter": [
+            "physics"
+        ]
+    },
+    "edges": {
+        "color": {
+            "inherit": true
+        },
+        "smooth": {
+            "enabled": true,
+            "type": "dynamic"
+        }
+    },
+    "interaction": {
+        "dragNodes": true,
+        "hideEdgesOnDrag": false,
+        "hideNodesOnDrag": false
+    },
+    "physics": {
+        "enabled": true,
+        "repulsion": {
+            "centralGravity": 0.05,
+            "damping": 0.09,
+            "nodeDistance": 300,
+            "springConstant": 0.03,
+            "springLength": 250
+        },
+        "solver": "repulsion",
+        "stabilization": {
+            "enabled": true,
+            "fit": true,
+            "iterations": 1000,
+            "onlyDynamicEdges": false,
+            "updateInterval": 50
+        }
+    }
+};
+
+                  
+
+
+                  
+                  // if this network requires displaying the configure window,
+                  // put it in its div
+                  options.configure["container"] = document.getElementById("config");
+                  
+
+                  network = new vis.Network(container, data, options);
+
+                  
+
+                  
+
+                  
+
+
+                  
+
+                  return network;
+
+              }
+              drawGraph();
+        </script>
+    </body>
+</html>

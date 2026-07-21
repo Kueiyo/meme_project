@@ -1,0 +1,21 @@
+{
+  "coin": "BOME",
+  "top50_concentration": 0.804254,
+  "clustering_coefficient": 0.056381,
+  "clustering_details": {
+    "scale_10": 0.0,
+    "scale_50": 0.05022,
+    "scale_100": 0.056381,
+    "scale_500": 0.056381,
+    "scale_1000": 0.056381
+  },
+  "early_buyers_ratio": 0.02,
+  "early_buyers_details": {
+    "scale_10": 0.02,
+    "scale_50": 0.02,
+    "scale_100": 0.02,
+    "scale_500": 0.02,
+    "scale_1000": 0.08
+  },
+  "cex_wallet_count": 0
+}

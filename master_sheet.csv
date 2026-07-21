@@ -1,0 +1,131 @@
+🪙 小專案 Master Data Sheet — Meme Coin 研究資料總表,,,,,,,,,,,,
+token_address,token_name,token_symbol,label,top50_concentration,clustering_coefficient,early_buyers_ratio,cex_wallet_count,kol_handle,kol_tweet_time_utc,kol_tweet_url,price_drop_pct,liquidity_removal_pct
+"合約地址
+(Solana)
+填：D","代幣名稱
+填：D","符號
+填：D","類型
+(1=操盤/0=正常)
+填：D","前50大戶
+佔比 (A2)
+填：A2","錢包關聯度
+(A2)
+填：A2","早鳥佔比
+(A2)
+填：A2","CEX地址數
+(A2)
+填：A2","KOL帳號
+(B1)
+填：B1","推文時間UTC
+(B1)
+填：B1","推文連結
+(B1)
+填：B1","最大跌幅%
+(C2)
+填：C2","流動性撤除%
+(C1)
+填：C1"
+用Solscan搜HAWK,Hawk Tuah,HAWK,1,0.943588,0.171815,0.06,0,"@CryptoTalkMan","08:10 · Jun 22, 2024",https://x.com/CryptoTalkMan/status/1804426835142287743?s=20,,
+HAWKThXRcNL9ZGZKqgUXLm4W8tnRZ7U6MVdEepSutj34,,,,,,,,"@stekisteks
+","01:18 · Jun 22, 2024
+",https://x.com/stekisteks/status/1804292736855814407?s=20,,
+,,,,,,,,"@stekisteks
+","00:25 · Jun 22, 2024",https://x.com/stekisteks/status/1804309694842015774?s=20,,
+,,,,,,,,"@beeple
+","03:55 · Jun 22, 2024
+",https://x.com/beeple/status/1804362550990995741?s=20,,
+,,,,,,,,"@poe_real69
+","04:05 · Jun 22, 2024
+",https://x.com/poe_real69/status/1804364959813337512?s=20,,
+,,,,,,,,"@MarioNawfal
+","01:20 · Dec 5, 2024
+",https://x.com/MarioNawfal/status/1864449779737985421?s=20,,
+,,,,,,,,"@elonmusk
+","18:07 · Jun 27, 2024
+",https://x.com/elonmusk/status/1806011322238206432?s=20,,
+,,,,,,,,"@MarioNawfal
+","23:21 · Jul 27, 2024
+",https://x.com/MarioNawfal/status/1816977046532248045?s=20,,
+,,,,,,,,@CryptoQueenCoin,"21:51 · Jun 30, 2024
+",https://x.com/CryptoQueenCoin/status/1807713751799562501?s=20,,
+用Solscan搜LIBRA,LIBRA,LIBRA,1,,0.040036,0.04,0,@stoolpresidente,"01:04 · Feb 18, 2025",https://x.com/stoolpresidente/status/1891654901152751911?s=20,,
+,,,,,,,,@stoolpresidente,"04:42 · Feb 18, 2025
+",https://x.com/stoolpresidente/status/1891528769770279114?s=20,,
+,,,,,,,,@GordonGekko,"21:45 · Feb 16, 2025",https://x.com/GordonGekko/status/1891423695916126381?s=20,,
+,,,,,,,,@stoolpresidente,"19:35 · Feb 17, 2025
+",https://x.com/stoolpresidente/status/1891542069690212669?s=20,,
+,,,,,,,,@ethmaxi,"19:36 · Feb 17, 2025",https://x.com/ethmaxi/status/1891542173130060157?s=20,,
+,,,,,,,,@cryptolyxe,"04:45 · Feb 18, 2025
+",https://x.com/cryptolyxe/status/1891529374706413695?s=20,,
+用Solscan搜SHAR,Sharpei,SHAR,1,,0.040019,0.1,0,@rutradebtc,15:11 · 2024年10月23日,https://x.com/rutradebtc/status/1849106496950284602?s=20,,
+,,,,,,,,@btc_789,"15:04 · 2024年10月23日
+",https://x.com/btc_789/status/1849104554094387205?s=20,,
+,,,,,,,,@btc_789,14:29 · 2024年10月23日,https://x.com/btc_789/status/1849095756134981660?s=20,,
+,,,,,,,,@Guomin184935,15:57 · 2024年10月23日,https://x.com/Guomin184935/status/1849117938386927841?s=20,,
+,,,,,,,,@jinmu9,"15:33 · 2024年10月23日
+",https://x.com/jinmu9/status/1849111858491609229?s=20,,
+用Solscan搜QUANT,Gen Z Quant,QUANT,1,,0,0.02,0,@wsbmod,05:14 · 2024年11月20日,https://x.com/wsbmod/status/1859102950297076130?s=20,,
+,,,,,,,,@dr_crypto_calls,"12:38 · 2025年1月20日
+",https://x.com/dr_crypto_calls/status/1881320473377845591?s=20,,
+,,,,,,,,@Wabibi,06:21 · 2024年11月20日,https://x.com/Wabibi/status/1859089706882842780?s=20,,
+,,,,,,,,@Wabibi,05:54 · 2024年11月20日,https://x.com/Wabibi/status/1859113042845302791?s=20,,
+用DexScreener搜TRUMP,Official Trump,TRUMP,1,,0.049556,0,0,@alx,06:44 · 2025年1月18日,https://x.com/alx/status/1880506605193818275?s=20,,
+6p6xgHyF7AeE6TZkSmFsko444wqoP15icUSqi2jfGiPN,,,,,,,,@BTCdayu,"02:50 · 2025年1月18日
+",https://x.com/BTCdayu/status/1880447593773432963?s=20,,
+,,,,,,,,@realDonaldTrump,02:44 · 2025年1月18日,https://x.com/realDonaldTrump/status/1880446012168249386?s=20,,
+,,,,,,,,@BTCdayu,05:28 · 2025年1月18日,https://x.com/BTCdayu/status/1880487522847100929?s=20,,
+,,,,,,,,@barkmeta,03:15 · 2025年1月18日,https://x.com/barkmeta/status/1880454004414759123?s=20,,
+,,,,,,,,@GodsBurnt,17:29 · 2025年1月18日,https://x.com/GodsBurnt/status/1880668807242588249?s=20,,
+,,,,,,,,@bokujyuumai,10:21 · 2025年1月19日,https://x.com/bokujyuumai/status/1880923444189286479?s=20,,
+,,,,,,,,@bokujyuumai,09:36 · 2025年1月19日,https://x.com/bokujyuumai/status/1880912136647676111?s=20,,
+,,,,,,,,@Mrbankstips,09:56 · 2025年1月19日,https://x.com/Mrbankstips/status/1880917117383413761?s=20,,
+FUAfBo2jgks6gB4Z4LfZkqSZgzNucisEHqnNebaRxM1P,MELANIA,MELANIA,1,,0,0.1,0,@renzosalpha,21:26 · 2025年1月19日,https://x.com/renzosalpha/status/1881090940808696294?s=20,,
+,,,,,,,,@dogstelegrameme,"23:57 · 2025年1月19日
+",https://x.com/dogstelegrameme/status/1881128815583539296?s=20,,
+,,,,,,,,@MELANIATRUMP,21:42 · 2025年1月19日,https://x.com/MELANIATRUMP/status/1881094861279129643?s=20,,
+,,,,,,,,@Jejouw,00:52 · 2025年1月20日,https://x.com/Jejouw/status/1881142811464269883?s=20,,
+,,,,,,,,@Pablo_cro,"21:53 · 2025年1月20日
+",https://x.com/Pablo_cro/status/1881097742560457088?s=20,,
+,,,,,,,,@playboycrypt0,21:27 · 2025年1月20日,https://x.com/playboycrypt0/status/1881091239212359900?s=20,,
+,,,,,,,,@IAmCryptoWolfy,12:29 · 2025年1月21日,https://x.com/IAmCryptoWolfy/status/1881680486717850110?s=20,,
+,,,,,,,,@TrueMELANIAmeme,"00:11 · 2025年1月21日
+",https://x.com/TrueMELANIAmeme/status/1881494907757695352?s=20,,
+,,,,,,,,@kriptowarrior,21:23 · 2025年1月19日,https://x.com/kriptowarrior/status/1881090013360009548?s=20,,
+,,,,,,,,@Web3_Dad,21:34 · 2025年1月19日,https://x.com/Web3_Dad/status/1881092791390085581?s=20,,
+,,,,,,,,@0x99Gohan,17:48 · 2025年1月21日,https://x.com/0x99Gohan/status/1881760730128802211?s=20,,
+,,,,,,,,@DonWedge,"22:18 · 2025年1月19日
+",https://x.com/DonWedge/status/1881103857608257543?s=20,,
+用DexScreener搜YZY,YZY (Kanye West),YZY,1,,0,0.02,0,@RonnieRiches,01:58 · 2025年8月21日,https://x.com/RonnieRiches/status/1958347957339844865?s=20,,
+,,,,,,,,@ShawnCT_,03:47 · 2025年8月21日,https://x.com/ShawnCT_/status/1958375439363449211?s=20,,
+,,,,,,,,@CryptoHayes,02:34 · 2025年8月21日,https://x.com/CryptoHayes/status/1958356982991401006?s=20,,
+,,,,,,,,@marccolcer,"03:26 · 2025年8月21日
+",https://x.com/marccolcer/status/1958370016015106388?s=20,,
+,,,,,,,,@clementetv_,"02:13 · 2025年8月21日
+",https://x.com/clementetv_/status/1958351776664437244?s=20,,
+,,,,,,,,@GordonGekko,05:32 · 2025年8月21日,https://x.com/GordonGekko/status/1958401687795712388?s=20,,
+,,,,,,,,@barkmeta,05:21 · 2025年8月21日,https://x.com/barkmeta/status/1958398962240475513?s=20,,
+,,,,,,,,@imperooterxbt,02:30 · 2025年8月21日,https://x.com/imperooterxbt/status/1958355899741028442?s=20,,
+,,,,,,,,@GordonGekko,11:21 · 2025年8月21日,https://x.com/GordonGekko/status/1958489508090892415?s=20,,
+用DexScreener搜M3M3,M3M3 (Meteora),M3M3,1,,0.046812,0.04,0,@SolidTradesz,17:29 · 2024年12月8日,https://x.com/SolidTradesz/status/1865810929012834699?s=20,,
+,,,,,,,,@WEAREM3M3_,"04:00 · 2024年12月9日
+",https://x.com/WEAREM3M3_/status/1865788502765343223?s=20,,
+,,,,,,,,@WEAREM3M3_,22:04 · 2024年12月14日,https://x.com/WEAREM3M3_/status/1868054385244389742?s=20,,
+,,,,,,,,@WEAREM3M3_,"01:31 · 2024年12月10日
+",https://x.com/WEAREM3M3_/status/1866475821830988105?s=20,,
+,,,,,,,,@WEAREM3M3_,18:20 · 2024年12月11日,https://x.com/WEAREM3M3_/status/1866910928010154452?s=20,,
+,,,,,,,,@FabianoSolana,10:35 · 2025年1月18日,https://x.com/FabianoSolana/status/1880564747307028951?s=20,,
+,,,,,,,,@jussy_world,"10:06 · 2024年12月24日
+",https://x.com/jussy_world/status/1871497590451343608?s=20,,
+,,,,,,,,@PowderWeb3,上午6:43 · 2025年1月4日,https://x.com/PowderWeb3/status/1875311997358629234?s=20,,
+帶補上,CatFi,CATFI,1,0.936481,0.040017,0.12,0,,,,,
+用DexScreener搜CONDOM,CONDOM,CONDOM,1,1,0.133874,0.09375,0,,,,,
+DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263,Bonk,BONK,0,0.531988,0.104667,0.02,0,,,,,
+EKpQGSJtjMFqKZ9KQanSqYXRcF8fBopzLHYxdM65zcjm,Dogwifhat,WIF,0,0.556857,0.187909,0.06,0,,,,,
+7GCihgDB8fe6KNjn2MYtkzZcRjQy3t9GHdC8uHYmW2hr,Popcat,POPCAT,0,0.542478,0.166857,0.02,0,,,,,
+9BB6NFEcjBCtnNLFko2FqVQBq8HHM13kCyYcdQbgpump,Fartcoin,FARTCOIN,0,0.44643,0,0,0,,,,,
+MEW1gQWJ3nEXg2qgERiKu7FAFj79PHvQVREQUzScPP5,Cat in a Dogs World,MEW,0,0.79966,0.06,0.1,0,,,,,
+ukHH6c7mMyiWCf1b9pnWe25TSpkDDt3H5pQZgZ74J82,Book of Meme,BOME,0,0.807951,0,0.02,0,,,,,
+5z3EqYQo9HiCEs3R84RCDMu2n7anpDMxRhdK8PSWmrRC,Ponke,PONKE,0,0.6183,0.046667,0.02,0,,,,,
+2qEHjDLDLbuBgRYvsxhc5D6uDWAivNFZGan56P1tpump,Peanut the Squirrel,PNUT,0,0.821072,0,0.08,0,,,,,
+CzLSujWBLFsSjncfkh59rUFqvafWcY5tzedWJSuypump,Goatseus Maximus,GOAT,0,0.655482,0,0.04,0,,,,,
+ED5nyyWEzpPPiWimP8vYm7sD7TD3LAt3Q3gRTWHzPJBY,Moo Deng,MOODENG,0,0.710083,0,0.06,0,,,,,

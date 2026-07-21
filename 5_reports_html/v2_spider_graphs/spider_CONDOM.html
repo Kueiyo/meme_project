@@ -1,0 +1,178 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        
+            <script src="lib/bindings/utils.js"></script>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/dist/vis-network.min.css" integrity="sha512-WgxfT5LWjfszlPHXRmBWHkV2eceiWTOBvrKCNbdgDYTHrT2AeLCGbF4sZlZw3UMN3WtL0tGUoIAKsu8mllg/XA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/vis-network.min.js" integrity="sha512-LnvoEWDFrqGHlHmDD2101OrLcbsfkrzoSpvtSQtxK3RMnRV0eOkhhBN2dXHKRrUU8p2DGRTk35n4O8nWSVe1mQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+            
+        
+<center>
+<h1></h1>
+</center>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+        <link
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
+          crossorigin="anonymous"
+        />
+        <script
+          src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+          crossorigin="anonymous"
+        ></script>
+
+
+        <center>
+          <h1></h1>
+        </center>
+        <style type="text/css">
+
+             #mynetwork {
+                 width: 100%;
+                 height: 100vh;
+                 background-color: #121212;
+                 border: 1px solid lightgray;
+                 position: relative;
+                 float: left;
+             }
+
+             
+
+             
+             #config {
+                 float: left;
+                 width: 400px;
+                 height: 600px;
+             }
+             
+
+             
+        </style>
+    </head>
+
+
+    <body>
+        <div class="card" style="width: 100%">
+            
+            
+            <div id="mynetwork" class="card-body"></div>
+        </div>
+
+        
+        
+            <div id="config"></div>
+        
+
+        <script type="text/javascript">
+
+              // initialize global variables.
+              var edges;
+              var nodes;
+              var allNodes;
+              var allEdges;
+              var nodeColors;
+              var originalNodes;
+              var network;
+              var container;
+              var options, data;
+              var filter = {
+                  item : '',
+                  property : '',
+                  value : []
+              };
+
+              
+
+              
+
+              // This method is responsible for drawing the graph, returns the drawn network
+              function drawGraph() {
+                  var container = document.getElementById('mynetwork');
+
+                  
+
+                  // parsing and collecting nodes and edges from the python
+                  nodes = new vis.DataSet([{"borderWidth": 2, "color": "#00BFFF", "font": {"color": "#E0E0E0"}, "id": "5vV2csjnu3CaUZHRS5HjUGx8zjpSCJRD5AmW3MsLFK7A", "label": "5vV2...FK7A", "shape": "dot", "size": 18, "title": "\u3010\u5b8c\u6574\u9322\u5305\u5730\u5740\u3011\n5vV2csjnu3CaUZHRS5HjUGx8zjpSCJRD5AmW3MsLFK7A\n\n\ud83d\udd17 \u95dc\u806f\u5927\u6236\u6578: 1 \u4eba"}, {"borderWidth": 2, "color": "#00BFFF", "font": {"color": "#E0E0E0"}, "id": "Wallet_Target_1_FK7A", "label": "Wall...FK7A", "shape": "dot", "size": 18, "title": "\u3010\u5b8c\u6574\u9322\u5305\u5730\u5740\u3011\nWallet_Target_1_FK7A\n\n\ud83d\udd17 \u95dc\u806f\u5927\u6236\u6578: 1 \u4eba"}, {"borderWidth": 2, "color": "#00BFFF", "font": {"color": "#E0E0E0"}, "id": "G8Wp42CCZnut5RidUSNebxcpeiLA2Nru2yaM4bs1MUtt", "label": "G8Wp...MUtt", "shape": "dot", "size": 18, "title": "\u3010\u5b8c\u6574\u9322\u5305\u5730\u5740\u3011\nG8Wp42CCZnut5RidUSNebxcpeiLA2Nru2yaM4bs1MUtt\n\n\ud83d\udd17 \u95dc\u806f\u5927\u6236\u6578: 1 \u4eba"}, {"borderWidth": 2, "color": "#00BFFF", "font": {"color": "#E0E0E0"}, "id": "Wallet_Target_2_MUtt", "label": "Wall...MUtt", "shape": "dot", "size": 18, "title": "\u3010\u5b8c\u6574\u9322\u5305\u5730\u5740\u3011\nWallet_Target_2_MUtt\n\n\ud83d\udd17 \u95dc\u806f\u5927\u6236\u6578: 1 \u4eba"}, {"borderWidth": 2, "color": "#00BFFF", "font": {"color": "#E0E0E0"}, "id": "Age9deJTm5LDQpaNcVhPw4NGhbbHcvrkv8MndvfcYsLw", "label": "Age9...YsLw", "shape": "dot", "size": 18, "title": "\u3010\u5b8c\u6574\u9322\u5305\u5730\u5740\u3011\nAge9deJTm5LDQpaNcVhPw4NGhbbHcvrkv8MndvfcYsLw\n\n\ud83d\udd17 \u95dc\u806f\u5927\u6236\u6578: 1 \u4eba"}, {"borderWidth": 2, "color": "#00BFFF", "font": {"color": "#E0E0E0"}, "id": "Wallet_Target_3_YsLw", "label": "Wall...YsLw", "shape": "dot", "size": 18, "title": "\u3010\u5b8c\u6574\u9322\u5305\u5730\u5740\u3011\nWallet_Target_3_YsLw\n\n\ud83d\udd17 \u95dc\u806f\u5927\u6236\u6578: 1 \u4eba"}, {"borderWidth": 2, "color": "#00BFFF", "font": {"color": "#E0E0E0"}, "id": "3b9AVwzgiojVU196zDiERvyrZsJSDvZ1MKST4LWRzF47", "label": "3b9A...zF47", "shape": "dot", "size": 18, "title": "\u3010\u5b8c\u6574\u9322\u5305\u5730\u5740\u3011\n3b9AVwzgiojVU196zDiERvyrZsJSDvZ1MKST4LWRzF47\n\n\ud83d\udd17 \u95dc\u806f\u5927\u6236\u6578: 1 \u4eba"}, {"borderWidth": 2, "color": "#00BFFF", "font": {"color": "#E0E0E0"}, "id": "Wallet_Target_4_zF47", "label": "Wall...zF47", "shape": "dot", "size": 18, "title": "\u3010\u5b8c\u6574\u9322\u5305\u5730\u5740\u3011\nWallet_Target_4_zF47\n\n\ud83d\udd17 \u95dc\u806f\u5927\u6236\u6578: 1 \u4eba"}, {"borderWidth": 2, "color": "#00BFFF", "font": {"color": "#E0E0E0"}, "id": "AHAHLuQN8uuCK4sLMyCwjiA7cEFQt67Qocbqga68d4cZ", "label": "AHAH...d4cZ", "shape": "dot", "size": 18, "title": "\u3010\u5b8c\u6574\u9322\u5305\u5730\u5740\u3011\nAHAHLuQN8uuCK4sLMyCwjiA7cEFQt67Qocbqga68d4cZ\n\n\ud83d\udd17 \u95dc\u806f\u5927\u6236\u6578: 1 \u4eba"}, {"borderWidth": 2, "color": "#00BFFF", "font": {"color": "#E0E0E0"}, "id": "Wallet_Target_5_d4cZ", "label": "Wall...d4cZ", "shape": "dot", "size": 18, "title": "\u3010\u5b8c\u6574\u9322\u5305\u5730\u5740\u3011\nWallet_Target_5_d4cZ\n\n\ud83d\udd17 \u95dc\u806f\u5927\u6236\u6578: 1 \u4eba"}, {"borderWidth": 2, "color": "#00BFFF", "font": {"color": "#E0E0E0"}, "id": "7Bke8r2MJk7boSLvARyAwBjHqbB3pERXFsZKAW3KnydF", "label": "7Bke...nydF", "shape": "dot", "size": 18, "title": "\u3010\u5b8c\u6574\u9322\u5305\u5730\u5740\u3011\n7Bke8r2MJk7boSLvARyAwBjHqbB3pERXFsZKAW3KnydF\n\n\ud83d\udd17 \u95dc\u806f\u5927\u6236\u6578: 1 \u4eba"}, {"borderWidth": 2, "color": "#00BFFF", "font": {"color": "#E0E0E0"}, "id": "Wallet_Target_6_nydF", "label": "Wall...nydF", "shape": "dot", "size": 18, "title": "\u3010\u5b8c\u6574\u9322\u5305\u5730\u5740\u3011\nWallet_Target_6_nydF\n\n\ud83d\udd17 \u95dc\u806f\u5927\u6236\u6578: 1 \u4eba"}, {"borderWidth": 2, "color": "#00BFFF", "font": {"color": "#E0E0E0"}, "id": "2Pq2CxPJ8Aq2CAjHDiBNXSm9LKZoJ4yt8pzhd2baB7C6", "label": "2Pq2...B7C6", "shape": "dot", "size": 18, "title": "\u3010\u5b8c\u6574\u9322\u5305\u5730\u5740\u3011\n2Pq2CxPJ8Aq2CAjHDiBNXSm9LKZoJ4yt8pzhd2baB7C6\n\n\ud83d\udd17 \u95dc\u806f\u5927\u6236\u6578: 1 \u4eba"}, {"borderWidth": 2, "color": "#00BFFF", "font": {"color": "#E0E0E0"}, "id": "Wallet_Target_7_B7C6", "label": "Wall...B7C6", "shape": "dot", "size": 18, "title": "\u3010\u5b8c\u6574\u9322\u5305\u5730\u5740\u3011\nWallet_Target_7_B7C6\n\n\ud83d\udd17 \u95dc\u806f\u5927\u6236\u6578: 1 \u4eba"}, {"borderWidth": 2, "color": "#00BFFF", "font": {"color": "#E0E0E0"}, "id": "7WMpKNPQxGhL1xpj4gFRN7kLvXo17fx6p2uZzBGsZphs", "label": "7WMp...Zphs", "shape": "dot", "size": 18, "title": "\u3010\u5b8c\u6574\u9322\u5305\u5730\u5740\u3011\n7WMpKNPQxGhL1xpj4gFRN7kLvXo17fx6p2uZzBGsZphs\n\n\ud83d\udd17 \u95dc\u806f\u5927\u6236\u6578: 1 \u4eba"}, {"borderWidth": 2, "color": "#00BFFF", "font": {"color": "#E0E0E0"}, "id": "Wallet_Target_8_Zphs", "label": "Wall...Zphs", "shape": "dot", "size": 18, "title": "\u3010\u5b8c\u6574\u9322\u5305\u5730\u5740\u3011\nWallet_Target_8_Zphs\n\n\ud83d\udd17 \u95dc\u806f\u5927\u6236\u6578: 1 \u4eba"}, {"borderWidth": 2, "color": "#00BFFF", "font": {"color": "#E0E0E0"}, "id": "AW9tSsLLLp2xHRVxyNLHgJTrTN4m47QdXC77kpdb2fBQ", "label": "AW9t...2fBQ", "shape": "dot", "size": 18, "title": "\u3010\u5b8c\u6574\u9322\u5305\u5730\u5740\u3011\nAW9tSsLLLp2xHRVxyNLHgJTrTN4m47QdXC77kpdb2fBQ\n\n\ud83d\udd17 \u95dc\u806f\u5927\u6236\u6578: 1 \u4eba"}, {"borderWidth": 2, "color": "#00BFFF", "font": {"color": "#E0E0E0"}, "id": "Wallet_Target_9_2fBQ", "label": "Wall...2fBQ", "shape": "dot", "size": 18, "title": "\u3010\u5b8c\u6574\u9322\u5305\u5730\u5740\u3011\nWallet_Target_9_2fBQ\n\n\ud83d\udd17 \u95dc\u806f\u5927\u6236\u6578: 1 \u4eba"}, {"borderWidth": 2, "color": "#00BFFF", "font": {"color": "#E0E0E0"}, "id": "AgmLJBMDCqWynYnQiPCuj9ewsNNsBJXyzoUhD9LJzN51", "label": "AgmL...zN51", "shape": "dot", "size": 18, "title": "\u3010\u5b8c\u6574\u9322\u5305\u5730\u5740\u3011\nAgmLJBMDCqWynYnQiPCuj9ewsNNsBJXyzoUhD9LJzN51\n\n\ud83d\udd17 \u95dc\u806f\u5927\u6236\u6578: 1 \u4eba"}, {"borderWidth": 2, "color": "#00BFFF", "font": {"color": "#E0E0E0"}, "id": "Wallet_Target_10_zN51", "label": "Wall...zN51", "shape": "dot", "size": 18, "title": "\u3010\u5b8c\u6574\u9322\u5305\u5730\u5740\u3011\nWallet_Target_10_zN51\n\n\ud83d\udd17 \u95dc\u806f\u5927\u6236\u6578: 1 \u4eba"}, {"borderWidth": 2, "color": "#00BFFF", "font": {"color": "#E0E0E0"}, "id": "HiStAEEGkdXaYededtE3qZLhGhWQPwiLzcq3Ju4CPNrP", "label": "HiSt...PNrP", "shape": "dot", "size": 18, "title": "\u3010\u5b8c\u6574\u9322\u5305\u5730\u5740\u3011\nHiStAEEGkdXaYededtE3qZLhGhWQPwiLzcq3Ju4CPNrP\n\n\ud83d\udd17 \u95dc\u806f\u5927\u6236\u6578: 1 \u4eba"}, {"borderWidth": 2, "color": "#00BFFF", "font": {"color": "#E0E0E0"}, "id": "Wallet_Target_11_PNrP", "label": "Wall...PNrP", "shape": "dot", "size": 18, "title": "\u3010\u5b8c\u6574\u9322\u5305\u5730\u5740\u3011\nWallet_Target_11_PNrP\n\n\ud83d\udd17 \u95dc\u806f\u5927\u6236\u6578: 1 \u4eba"}, {"borderWidth": 2, "color": "#00BFFF", "font": {"color": "#E0E0E0"}, "id": "7rtiKSUDLBm59b1SBmD9oajcP8xE64vAGSMbAN5CXy1q", "label": "7rti...Xy1q", "shape": "dot", "size": 18, "title": "\u3010\u5b8c\u6574\u9322\u5305\u5730\u5740\u3011\n7rtiKSUDLBm59b1SBmD9oajcP8xE64vAGSMbAN5CXy1q\n\n\ud83d\udd17 \u95dc\u806f\u5927\u6236\u6578: 1 \u4eba"}, {"borderWidth": 2, "color": "#00BFFF", "font": {"color": "#E0E0E0"}, "id": "Wallet_Target_12_Xy1q", "label": "Wall...Xy1q", "shape": "dot", "size": 18, "title": "\u3010\u5b8c\u6574\u9322\u5305\u5730\u5740\u3011\nWallet_Target_12_Xy1q\n\n\ud83d\udd17 \u95dc\u806f\u5927\u6236\u6578: 1 \u4eba"}, {"borderWidth": 2, "color": "#00BFFF", "font": {"color": "#E0E0E0"}, "id": "GwoZHHqn6QNAqiLE4SkjQC9psR6dXAjTGAzTqa9GqUpa", "label": "GwoZ...qUpa", "shape": "dot", "size": 18, "title": "\u3010\u5b8c\u6574\u9322\u5305\u5730\u5740\u3011\nGwoZHHqn6QNAqiLE4SkjQC9psR6dXAjTGAzTqa9GqUpa\n\n\ud83d\udd17 \u95dc\u806f\u5927\u6236\u6578: 1 \u4eba"}, {"borderWidth": 2, "color": "#00BFFF", "font": {"color": "#E0E0E0"}, "id": "Wallet_Target_13_qUpa", "label": "Wall...qUpa", "shape": "dot", "size": 18, "title": "\u3010\u5b8c\u6574\u9322\u5305\u5730\u5740\u3011\nWallet_Target_13_qUpa\n\n\ud83d\udd17 \u95dc\u806f\u5927\u6236\u6578: 1 \u4eba"}, {"borderWidth": 2, "color": "#00BFFF", "font": {"color": "#E0E0E0"}, "id": "A7rh6asDeqdx2ycTpn1o7fqnaL16UFEnEMtustN22PLU", "label": "A7rh...2PLU", "shape": "dot", "size": 18, "title": "\u3010\u5b8c\u6574\u9322\u5305\u5730\u5740\u3011\nA7rh6asDeqdx2ycTpn1o7fqnaL16UFEnEMtustN22PLU\n\n\ud83d\udd17 \u95dc\u806f\u5927\u6236\u6578: 1 \u4eba"}, {"borderWidth": 2, "color": "#00BFFF", "font": {"color": "#E0E0E0"}, "id": "Wallet_Target_14_2PLU", "label": "Wall...2PLU", "shape": "dot", "size": 18, "title": "\u3010\u5b8c\u6574\u9322\u5305\u5730\u5740\u3011\nWallet_Target_14_2PLU\n\n\ud83d\udd17 \u95dc\u806f\u5927\u6236\u6578: 1 \u4eba"}, {"borderWidth": 2, "color": "#00BFFF", "font": {"color": "#E0E0E0"}, "id": "9RAufBfjGQjDfrwxeyKmZWPADHSb8HcoqCdrmpqvCr1g", "label": "9RAu...Cr1g", "shape": "dot", "size": 27, "title": "\u3010\u5b8c\u6574\u9322\u5305\u5730\u5740\u3011\n9RAufBfjGQjDfrwxeyKmZWPADHSb8HcoqCdrmpqvCr1g\n\n\ud83d\udd17 \u95dc\u806f\u5927\u6236\u6578: 4 \u4eba"}, {"borderWidth": 2, "color": "#00BFFF", "font": {"color": "#E0E0E0"}, "id": "Wallet_Target_15_Cr1g", "label": "Wall...Cr1g", "shape": "dot", "size": 18, "title": "\u3010\u5b8c\u6574\u9322\u5305\u5730\u5740\u3011\nWallet_Target_15_Cr1g\n\n\ud83d\udd17 \u95dc\u806f\u5927\u6236\u6578: 1 \u4eba"}, {"borderWidth": 2, "color": "#00BFFF", "font": {"color": "#E0E0E0"}, "id": "Wallet_Target_16_Cr1g", "label": "Wall...Cr1g", "shape": "dot", "size": 18, "title": "\u3010\u5b8c\u6574\u9322\u5305\u5730\u5740\u3011\nWallet_Target_16_Cr1g\n\n\ud83d\udd17 \u95dc\u806f\u5927\u6236\u6578: 1 \u4eba"}, {"borderWidth": 2, "color": "#00BFFF", "font": {"color": "#E0E0E0"}, "id": "Wallet_Target_17_Cr1g", "label": "Wall...Cr1g", "shape": "dot", "size": 18, "title": "\u3010\u5b8c\u6574\u9322\u5305\u5730\u5740\u3011\nWallet_Target_17_Cr1g\n\n\ud83d\udd17 \u95dc\u806f\u5927\u6236\u6578: 1 \u4eba"}, {"borderWidth": 2, "color": "#00BFFF", "font": {"color": "#E0E0E0"}, "id": "Wallet_Target_18_Cr1g", "label": "Wall...Cr1g", "shape": "dot", "size": 18, "title": "\u3010\u5b8c\u6574\u9322\u5305\u5730\u5740\u3011\nWallet_Target_18_Cr1g\n\n\ud83d\udd17 \u95dc\u806f\u5927\u6236\u6578: 1 \u4eba"}, {"borderWidth": 2, "color": "#00BFFF", "font": {"color": "#E0E0E0"}, "id": "AHqKk1TSoWHt6Gt7tFNjpyUoc3ZCNMPu95hd5Ur7GDX", "label": "AHqK...7GDX", "shape": "dot", "size": 18, "title": "\u3010\u5b8c\u6574\u9322\u5305\u5730\u5740\u3011\nAHqKk1TSoWHt6Gt7tFNjpyUoc3ZCNMPu95hd5Ur7GDX\n\n\ud83d\udd17 \u95dc\u806f\u5927\u6236\u6578: 1 \u4eba"}, {"borderWidth": 2, "color": "#00BFFF", "font": {"color": "#E0E0E0"}, "id": "Wallet_Target_19_7GDX", "label": "Wall...7GDX", "shape": "dot", "size": 18, "title": "\u3010\u5b8c\u6574\u9322\u5305\u5730\u5740\u3011\nWallet_Target_19_7GDX\n\n\ud83d\udd17 \u95dc\u806f\u5927\u6236\u6578: 1 \u4eba"}, {"borderWidth": 2, "color": "#00BFFF", "font": {"color": "#E0E0E0"}, "id": "9LGjXs2u3c9sVtaJDm22EzyhyzQoPjvaFJHs4LJWg9EB", "label": "9LGj...g9EB", "shape": "dot", "size": 18, "title": "\u3010\u5b8c\u6574\u9322\u5305\u5730\u5740\u3011\n9LGjXs2u3c9sVtaJDm22EzyhyzQoPjvaFJHs4LJWg9EB\n\n\ud83d\udd17 \u95dc\u806f\u5927\u6236\u6578: 1 \u4eba"}, {"borderWidth": 2, "color": "#00BFFF", "font": {"color": "#E0E0E0"}, "id": "Wallet_Target_20_g9EB", "label": "Wall...g9EB", "shape": "dot", "size": 18, "title": "\u3010\u5b8c\u6574\u9322\u5305\u5730\u5740\u3011\nWallet_Target_20_g9EB\n\n\ud83d\udd17 \u95dc\u806f\u5927\u6236\u6578: 1 \u4eba"}, {"borderWidth": 2, "color": "#00BFFF", "font": {"color": "#E0E0E0"}, "id": "2QfBNK2WDwSLoUQRb1zAnp3KM12N9hQ8q6ApwUMnWW2T", "label": "2QfB...WW2T", "shape": "dot", "size": 18, "title": "\u3010\u5b8c\u6574\u9322\u5305\u5730\u5740\u3011\n2QfBNK2WDwSLoUQRb1zAnp3KM12N9hQ8q6ApwUMnWW2T\n\n\ud83d\udd17 \u95dc\u806f\u5927\u6236\u6578: 1 \u4eba"}, {"borderWidth": 2, "color": "#00BFFF", "font": {"color": "#E0E0E0"}, "id": "Wallet_Target_21_WW2T", "label": "Wall...WW2T", "shape": "dot", "size": 18, "title": "\u3010\u5b8c\u6574\u9322\u5305\u5730\u5740\u3011\nWallet_Target_21_WW2T\n\n\ud83d\udd17 \u95dc\u806f\u5927\u6236\u6578: 1 \u4eba"}, {"borderWidth": 2, "color": "#00BFFF", "font": {"color": "#E0E0E0"}, "id": "66wniJpXzCF3DT4R9nuHWpdwNwLNUeTN1jLJLNkzCFJf", "label": "66wn...CFJf", "shape": "dot", "size": 18, "title": "\u3010\u5b8c\u6574\u9322\u5305\u5730\u5740\u3011\n66wniJpXzCF3DT4R9nuHWpdwNwLNUeTN1jLJLNkzCFJf\n\n\ud83d\udd17 \u95dc\u806f\u5927\u6236\u6578: 1 \u4eba"}, {"borderWidth": 2, "color": "#00BFFF", "font": {"color": "#E0E0E0"}, "id": "Wallet_Target_22_CFJf", "label": "Wall...CFJf", "shape": "dot", "size": 18, "title": "\u3010\u5b8c\u6574\u9322\u5305\u5730\u5740\u3011\nWallet_Target_22_CFJf\n\n\ud83d\udd17 \u95dc\u806f\u5927\u6236\u6578: 1 \u4eba"}, {"borderWidth": 2, "color": "#00BFFF", "font": {"color": "#E0E0E0"}, "id": "2c5jGvG6LFciNitPVms7NRr8BmF3frmkZco9zdS4A1Z5", "label": "2c5j...A1Z5", "shape": "dot", "size": 18, "title": "\u3010\u5b8c\u6574\u9322\u5305\u5730\u5740\u3011\n2c5jGvG6LFciNitPVms7NRr8BmF3frmkZco9zdS4A1Z5\n\n\ud83d\udd17 \u95dc\u806f\u5927\u6236\u6578: 1 \u4eba"}, {"borderWidth": 2, "color": "#00BFFF", "font": {"color": "#E0E0E0"}, "id": "Wallet_Target_23_A1Z5", "label": "Wall...A1Z5", "shape": "dot", "size": 18, "title": "\u3010\u5b8c\u6574\u9322\u5305\u5730\u5740\u3011\nWallet_Target_23_A1Z5\n\n\ud83d\udd17 \u95dc\u806f\u5927\u6236\u6578: 1 \u4eba"}, {"borderWidth": 2, "color": "#00BFFF", "font": {"color": "#E0E0E0"}, "id": "FPRRDwXxngKsgCKXf8Cdz1nFsddKMqfJ1i7ghxodXLEX", "label": "FPRR...XLEX", "shape": "dot", "size": 18, "title": "\u3010\u5b8c\u6574\u9322\u5305\u5730\u5740\u3011\nFPRRDwXxngKsgCKXf8Cdz1nFsddKMqfJ1i7ghxodXLEX\n\n\ud83d\udd17 \u95dc\u806f\u5927\u6236\u6578: 1 \u4eba"}, {"borderWidth": 2, "color": "#00BFFF", "font": {"color": "#E0E0E0"}, "id": "Wallet_Target_24_XLEX", "label": "Wall...XLEX", "shape": "dot", "size": 18, "title": "\u3010\u5b8c\u6574\u9322\u5305\u5730\u5740\u3011\nWallet_Target_24_XLEX\n\n\ud83d\udd17 \u95dc\u806f\u5927\u6236\u6578: 1 \u4eba"}, {"borderWidth": 2, "color": "#00BFFF", "font": {"color": "#E0E0E0"}, "id": "DFBBuDRirQ132PVSLQSvJeSQHMxHZ3mgbfjLrjYzQ3vC", "label": "DFBB...Q3vC", "shape": "dot", "size": 18, "title": "\u3010\u5b8c\u6574\u9322\u5305\u5730\u5740\u3011\nDFBBuDRirQ132PVSLQSvJeSQHMxHZ3mgbfjLrjYzQ3vC\n\n\ud83d\udd17 \u95dc\u806f\u5927\u6236\u6578: 1 \u4eba"}, {"borderWidth": 2, "color": "#00BFFF", "font": {"color": "#E0E0E0"}, "id": "Wallet_Target_25_Q3vC", "label": "Wall...Q3vC", "shape": "dot", "size": 18, "title": "\u3010\u5b8c\u6574\u9322\u5305\u5730\u5740\u3011\nWallet_Target_25_Q3vC\n\n\ud83d\udd17 \u95dc\u806f\u5927\u6236\u6578: 1 \u4eba"}, {"borderWidth": 2, "color": "#00BFFF", "font": {"color": "#E0E0E0"}, "id": "Gto8Zt5DA32TzYER2nnpg5LLagmkviUZfQCeHJP1iFaz", "label": "Gto8...iFaz", "shape": "dot", "size": 18, "title": "\u3010\u5b8c\u6574\u9322\u5305\u5730\u5740\u3011\nGto8Zt5DA32TzYER2nnpg5LLagmkviUZfQCeHJP1iFaz\n\n\ud83d\udd17 \u95dc\u806f\u5927\u6236\u6578: 1 \u4eba"}, {"borderWidth": 2, "color": "#00BFFF", "font": {"color": "#E0E0E0"}, "id": "Wallet_Target_26_iFaz", "label": "Wall...iFaz", "shape": "dot", "size": 18, "title": "\u3010\u5b8c\u6574\u9322\u5305\u5730\u5740\u3011\nWallet_Target_26_iFaz\n\n\ud83d\udd17 \u95dc\u806f\u5927\u6236\u6578: 1 \u4eba"}, {"borderWidth": 2, "color": "#00BFFF", "font": {"color": "#E0E0E0"}, "id": "rEFuNDRBfWZA2M4t8hpaWVa4c5N7gWkbDENfqmYpwae", "label": "rEFu...pwae", "shape": "dot", "size": 18, "title": "\u3010\u5b8c\u6574\u9322\u5305\u5730\u5740\u3011\nrEFuNDRBfWZA2M4t8hpaWVa4c5N7gWkbDENfqmYpwae\n\n\ud83d\udd17 \u95dc\u806f\u5927\u6236\u6578: 1 \u4eba"}, {"borderWidth": 2, "color": "#00BFFF", "font": {"color": "#E0E0E0"}, "id": "Wallet_Target_27_pwae", "label": "Wall...pwae", "shape": "dot", "size": 18, "title": "\u3010\u5b8c\u6574\u9322\u5305\u5730\u5740\u3011\nWallet_Target_27_pwae\n\n\ud83d\udd17 \u95dc\u806f\u5927\u6236\u6578: 1 \u4eba"}, {"borderWidth": 2, "color": "#00BFFF", "font": {"color": "#E0E0E0"}, "id": "8nsbrEAeh5JykM6bFVyLU2UfsxoiZCczUVa15XnywAxh", "label": "8nsb...wAxh", "shape": "dot", "size": 18, "title": "\u3010\u5b8c\u6574\u9322\u5305\u5730\u5740\u3011\n8nsbrEAeh5JykM6bFVyLU2UfsxoiZCczUVa15XnywAxh\n\n\ud83d\udd17 \u95dc\u806f\u5927\u6236\u6578: 1 \u4eba"}, {"borderWidth": 2, "color": "#00BFFF", "font": {"color": "#E0E0E0"}, "id": "Wallet_Target_28_wAxh", "label": "Wall...wAxh", "shape": "dot", "size": 18, "title": "\u3010\u5b8c\u6574\u9322\u5305\u5730\u5740\u3011\nWallet_Target_28_wAxh\n\n\ud83d\udd17 \u95dc\u806f\u5927\u6236\u6578: 1 \u4eba"}, {"borderWidth": 2, "color": "#00BFFF", "font": {"color": "#E0E0E0"}, "id": "FpHvs8SNdQsRA4sWysfEAw9zs9wgHJS2nnhx1RZJUbA3", "label": "FpHv...UbA3", "shape": "dot", "size": 18, "title": "\u3010\u5b8c\u6574\u9322\u5305\u5730\u5740\u3011\nFpHvs8SNdQsRA4sWysfEAw9zs9wgHJS2nnhx1RZJUbA3\n\n\ud83d\udd17 \u95dc\u806f\u5927\u6236\u6578: 1 \u4eba"}, {"borderWidth": 2, "color": "#00BFFF", "font": {"color": "#E0E0E0"}, "id": "Wallet_Target_29_UbA3", "label": "Wall...UbA3", "shape": "dot", "size": 18, "title": "\u3010\u5b8c\u6574\u9322\u5305\u5730\u5740\u3011\nWallet_Target_29_UbA3\n\n\ud83d\udd17 \u95dc\u806f\u5927\u6236\u6578: 1 \u4eba"}, {"borderWidth": 2, "color": "#00BFFF", "font": {"color": "#E0E0E0"}, "id": "BQrvnTSGksaXeCTzthMzskZoJUVATQwtwPsGuP21Gxiq", "label": "BQrv...Gxiq", "shape": "dot", "size": 18, "title": "\u3010\u5b8c\u6574\u9322\u5305\u5730\u5740\u3011\nBQrvnTSGksaXeCTzthMzskZoJUVATQwtwPsGuP21Gxiq\n\n\ud83d\udd17 \u95dc\u806f\u5927\u6236\u6578: 1 \u4eba"}, {"borderWidth": 2, "color": "#00BFFF", "font": {"color": "#E0E0E0"}, "id": "Wallet_Target_30_Gxiq", "label": "Wall...Gxiq", "shape": "dot", "size": 18, "title": "\u3010\u5b8c\u6574\u9322\u5305\u5730\u5740\u3011\nWallet_Target_30_Gxiq\n\n\ud83d\udd17 \u95dc\u806f\u5927\u6236\u6578: 1 \u4eba"}, {"borderWidth": 2, "color": "#00BFFF", "font": {"color": "#E0E0E0"}, "id": "3Kge6gV7J6YTLq3WUKNYPEyK7VSSuc17U2htXZC2qdS9", "label": "3Kge...qdS9", "shape": "dot", "size": 18, "title": "\u3010\u5b8c\u6574\u9322\u5305\u5730\u5740\u3011\n3Kge6gV7J6YTLq3WUKNYPEyK7VSSuc17U2htXZC2qdS9\n\n\ud83d\udd17 \u95dc\u806f\u5927\u6236\u6578: 1 \u4eba"}, {"borderWidth": 2, "color": "#00BFFF", "font": {"color": "#E0E0E0"}, "id": "Wallet_Target_31_qdS9", "label": "Wall...qdS9", "shape": "dot", "size": 18, "title": "\u3010\u5b8c\u6574\u9322\u5305\u5730\u5740\u3011\nWallet_Target_31_qdS9\n\n\ud83d\udd17 \u95dc\u806f\u5927\u6236\u6578: 1 \u4eba"}, {"borderWidth": 2, "color": "#00BFFF", "font": {"color": "#E0E0E0"}, "id": "BJY93u4vgexEAvhj26TJXoNp3vHzxfzxoYF6yPe8rZAm", "label": "BJY9...rZAm", "shape": "dot", "size": 18, "title": "\u3010\u5b8c\u6574\u9322\u5305\u5730\u5740\u3011\nBJY93u4vgexEAvhj26TJXoNp3vHzxfzxoYF6yPe8rZAm\n\n\ud83d\udd17 \u95dc\u806f\u5927\u6236\u6578: 1 \u4eba"}, {"borderWidth": 2, "color": "#00BFFF", "font": {"color": "#E0E0E0"}, "id": "Wallet_Target_32_rZAm", "label": "Wall...rZAm", "shape": "dot", "size": 18, "title": "\u3010\u5b8c\u6574\u9322\u5305\u5730\u5740\u3011\nWallet_Target_32_rZAm\n\n\ud83d\udd17 \u95dc\u806f\u5927\u6236\u6578: 1 \u4eba"}]);
+                  edges = new vis.DataSet([{"from": "5vV2csjnu3CaUZHRS5HjUGx8zjpSCJRD5AmW3MsLFK7A", "to": "Wallet_Target_1_FK7A", "width": 1}, {"from": "G8Wp42CCZnut5RidUSNebxcpeiLA2Nru2yaM4bs1MUtt", "to": "Wallet_Target_2_MUtt", "width": 1}, {"from": "Age9deJTm5LDQpaNcVhPw4NGhbbHcvrkv8MndvfcYsLw", "to": "Wallet_Target_3_YsLw", "width": 1}, {"from": "3b9AVwzgiojVU196zDiERvyrZsJSDvZ1MKST4LWRzF47", "to": "Wallet_Target_4_zF47", "width": 1}, {"from": "AHAHLuQN8uuCK4sLMyCwjiA7cEFQt67Qocbqga68d4cZ", "to": "Wallet_Target_5_d4cZ", "width": 1}, {"from": "7Bke8r2MJk7boSLvARyAwBjHqbB3pERXFsZKAW3KnydF", "to": "Wallet_Target_6_nydF", "width": 1}, {"from": "2Pq2CxPJ8Aq2CAjHDiBNXSm9LKZoJ4yt8pzhd2baB7C6", "to": "Wallet_Target_7_B7C6", "width": 1}, {"from": "7WMpKNPQxGhL1xpj4gFRN7kLvXo17fx6p2uZzBGsZphs", "to": "Wallet_Target_8_Zphs", "width": 1}, {"from": "AW9tSsLLLp2xHRVxyNLHgJTrTN4m47QdXC77kpdb2fBQ", "to": "Wallet_Target_9_2fBQ", "width": 1}, {"from": "AgmLJBMDCqWynYnQiPCuj9ewsNNsBJXyzoUhD9LJzN51", "to": "Wallet_Target_10_zN51", "width": 1}, {"from": "HiStAEEGkdXaYededtE3qZLhGhWQPwiLzcq3Ju4CPNrP", "to": "Wallet_Target_11_PNrP", "width": 1}, {"from": "7rtiKSUDLBm59b1SBmD9oajcP8xE64vAGSMbAN5CXy1q", "to": "Wallet_Target_12_Xy1q", "width": 1}, {"from": "GwoZHHqn6QNAqiLE4SkjQC9psR6dXAjTGAzTqa9GqUpa", "to": "Wallet_Target_13_qUpa", "width": 1}, {"from": "A7rh6asDeqdx2ycTpn1o7fqnaL16UFEnEMtustN22PLU", "to": "Wallet_Target_14_2PLU", "width": 1}, {"from": "9RAufBfjGQjDfrwxeyKmZWPADHSb8HcoqCdrmpqvCr1g", "to": "Wallet_Target_15_Cr1g", "width": 1}, {"from": "9RAufBfjGQjDfrwxeyKmZWPADHSb8HcoqCdrmpqvCr1g", "to": "Wallet_Target_16_Cr1g", "width": 1}, {"from": "9RAufBfjGQjDfrwxeyKmZWPADHSb8HcoqCdrmpqvCr1g", "to": "Wallet_Target_17_Cr1g", "width": 1}, {"from": "9RAufBfjGQjDfrwxeyKmZWPADHSb8HcoqCdrmpqvCr1g", "to": "Wallet_Target_18_Cr1g", "width": 1}, {"from": "AHqKk1TSoWHt6Gt7tFNjpyUoc3ZCNMPu95hd5Ur7GDX", "to": "Wallet_Target_19_7GDX", "width": 1}, {"from": "9LGjXs2u3c9sVtaJDm22EzyhyzQoPjvaFJHs4LJWg9EB", "to": "Wallet_Target_20_g9EB", "width": 1}, {"from": "2QfBNK2WDwSLoUQRb1zAnp3KM12N9hQ8q6ApwUMnWW2T", "to": "Wallet_Target_21_WW2T", "width": 1}, {"from": "66wniJpXzCF3DT4R9nuHWpdwNwLNUeTN1jLJLNkzCFJf", "to": "Wallet_Target_22_CFJf", "width": 1}, {"from": "2c5jGvG6LFciNitPVms7NRr8BmF3frmkZco9zdS4A1Z5", "to": "Wallet_Target_23_A1Z5", "width": 1}, {"from": "FPRRDwXxngKsgCKXf8Cdz1nFsddKMqfJ1i7ghxodXLEX", "to": "Wallet_Target_24_XLEX", "width": 1}, {"from": "DFBBuDRirQ132PVSLQSvJeSQHMxHZ3mgbfjLrjYzQ3vC", "to": "Wallet_Target_25_Q3vC", "width": 1}, {"from": "Gto8Zt5DA32TzYER2nnpg5LLagmkviUZfQCeHJP1iFaz", "to": "Wallet_Target_26_iFaz", "width": 1}, {"from": "rEFuNDRBfWZA2M4t8hpaWVa4c5N7gWkbDENfqmYpwae", "to": "Wallet_Target_27_pwae", "width": 1}, {"from": "8nsbrEAeh5JykM6bFVyLU2UfsxoiZCczUVa15XnywAxh", "to": "Wallet_Target_28_wAxh", "width": 1}, {"from": "FpHvs8SNdQsRA4sWysfEAw9zs9wgHJS2nnhx1RZJUbA3", "to": "Wallet_Target_29_UbA3", "width": 1}, {"from": "BQrvnTSGksaXeCTzthMzskZoJUVATQwtwPsGuP21Gxiq", "to": "Wallet_Target_30_Gxiq", "width": 1}, {"from": "3Kge6gV7J6YTLq3WUKNYPEyK7VSSuc17U2htXZC2qdS9", "to": "Wallet_Target_31_qdS9", "width": 1}, {"from": "BJY93u4vgexEAvhj26TJXoNp3vHzxfzxoYF6yPe8rZAm", "to": "Wallet_Target_32_rZAm", "width": 1}]);
+
+                  nodeColors = {};
+                  allNodes = nodes.get({ returnType: "Object" });
+                  for (nodeId in allNodes) {
+                    nodeColors[nodeId] = allNodes[nodeId].color;
+                  }
+                  allEdges = edges.get({ returnType: "Object" });
+                  // adding nodes and edges to the graph
+                  data = {nodes: nodes, edges: edges};
+
+                  var options = {
+    "configure": {
+        "enabled": true,
+        "filter": [
+            "physics"
+        ]
+    },
+    "edges": {
+        "color": {
+            "inherit": true
+        },
+        "smooth": {
+            "enabled": true,
+            "type": "dynamic"
+        }
+    },
+    "interaction": {
+        "dragNodes": true,
+        "hideEdgesOnDrag": false,
+        "hideNodesOnDrag": false
+    },
+    "physics": {
+        "enabled": true,
+        "repulsion": {
+            "centralGravity": 0.05,
+            "damping": 0.09,
+            "nodeDistance": 300,
+            "springConstant": 0.03,
+            "springLength": 250
+        },
+        "solver": "repulsion",
+        "stabilization": {
+            "enabled": true,
+            "fit": true,
+            "iterations": 1000,
+            "onlyDynamicEdges": false,
+            "updateInterval": 50
+        }
+    }
+};
+
+                  
+
+
+                  
+                  // if this network requires displaying the configure window,
+                  // put it in its div
+                  options.configure["container"] = document.getElementById("config");
+                  
+
+                  network = new vis.Network(container, data, options);
+
+                  
+
+                  
+
+                  
+
+
+                  
+
+                  return network;
+
+              }
+              drawGraph();
+        </script>
+    </body>
+</html>

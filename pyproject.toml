@@ -1,0 +1,15 @@
+[project]
+name = "meme-first-funder-tracker"
+version = "2.0.0"
+description = "Solana Meme Coin 鏈上籌碼結構與 First Funder 資金溯源分析工具（2026 鏈上數據讀書會）"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "aiohttp>=3.14.1",
+    "matplotlib>=3.11.0",
+    "networkx>=3.6.1",
+    "pandas>=2.2",
+    "pyvis>=0.3.2",
+    "python-dotenv>=1.0",
+    "requests>=2.34.2",
+]

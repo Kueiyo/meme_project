@@ -1,0 +1,258 @@
+{
+  "coin": "PNUT",
+  "mint": "2qEHjDLDLbuBgRYvsxhc5D6uDWAivNFZGan56P1tpump",
+  "total_supply": 999841753604581,
+  "top50_concentration": 0.821818,
+  "top50": [
+    {
+      "rank": 1,
+      "address": "2s3DmUkfJUu1F1qPpSVujUg9KndBg12wmzzZvSWpM5xW",
+      "balance": 250000000000000
+    },
+    {
+      "rank": 2,
+      "address": "665mScSscXvDfERi4huL3UwfszAwYiBz2zeyBm9AhsQP",
+      "balance": 127909035359183
+    },
+    {
+      "rank": 3,
+      "address": "5TWwGsgkbTqh8nyoa336dEiHXvAmnXuZnY27vTkWwhi1",
+      "balance": 71850931520293
+    },
+    {
+      "rank": 4,
+      "address": "5PUDvww84pE7FJ4PrJWz8TDotewFye8EEzk9xLGvQEWt",
+      "balance": 54697041723137
+    },
+    {
+      "rank": 5,
+      "address": "J53DbrknjPB8RLWG663VJAuKrcFx4h7HxYRuWFvGUcau",
+      "balance": 46818858511078
+    },
+    {
+      "rank": 6,
+      "address": "GvLbQmVoR3dRCL42z9gm1rxwAbavGpAQZ2nB5LRhdf95",
+      "balance": 40075462390028
+    },
+    {
+      "rank": 7,
+      "address": "2zxMeSRkYa462Zo7v5K7kFKtvpRC4MpvuC1HwA88sCR3",
+      "balance": 30561904850460
+    },
+    {
+      "rank": 8,
+      "address": "7ipmJwpuazWQKNdTDhKb3UZHhaWSJv8Wi9KPARSLjyYZ",
+      "balance": 26348606365889
+    },
+    {
+      "rank": 9,
+      "address": "9dzjQaUW1vt4vVVPLKE4iVAFPKFpqvXmcAWDs7Xq9tc7",
+      "balance": 24762689216201
+    },
+    {
+      "rank": 10,
+      "address": "DigY8TkbWGyvbopyGvgB8UZ3KfhG6qfcgpqtkz4fqNox",
+      "balance": 23325616971134
+    },
+    {
+      "rank": 11,
+      "address": "qxHSeGwUczoAHfxXh6CVate2PKF3kU7ouYYQ247zYMT",
+      "balance": 18204248403611
+    },
+    {
+      "rank": 12,
+      "address": "6dT8vEeJJQxdNoKELFmHHrQ4J3YEPYvupQhf7J6JA4Wf",
+      "balance": 16771221386899
+    },
+    {
+      "rank": 13,
+      "address": "HqJDxdzRiPczryyEzw76kC5gjhfFQDwr3wwENNf86YzA",
+      "balance": 16520886532307
+    },
+    {
+      "rank": 14,
+      "address": "EBSTuq6A2qAv1gacaJvShnGdBTVdZJtRnhKAcqivdLDv",
+      "balance": 14078386200890
+    },
+    {
+      "rank": 15,
+      "address": "AtBSx7P19pdkfN8E1TTXHqagska2CU1MeGU2X3ifGeRR",
+      "balance": 12621112487511
+    },
+    {
+      "rank": 16,
+      "address": "4yCGCrdrZsD3Q7hYL9jP2C7KFP74kSaPDAQcQpvtnAdX",
+      "balance": 10781312409836
+    },
+    {
+      "rank": 17,
+      "address": "A7gkPaUwRm1mwugnwu3DiuduqCTBxh3kpN2ZsrpEACdm",
+      "balance": 9327648648542
+    },
+    {
+      "rank": 18,
+      "address": "DC7wvELzRJXn3ihUkv6ALihowQuZBaFifUgYngJAnksf",
+      "balance": 8408360418411
+    },
+    {
+      "rank": 19,
+      "address": "BTMrCdmCd4QTRZ9UzsYcZg9uui1MebUsGRsmH35J6yvv",
+      "balance": 8346682909837
+    },
+    {
+      "rank": 20,
+      "address": "AjpfmxJpNQ9c5RC8CBrbPVPpyLFXAgy1QEvaFU5zyGgm",
+      "balance": 6835548834384
+    },
+    {
+      "rank": 21,
+      "address": "8KNqR2DXvrwWDKtWKeXkxiq9PUtnTJHAepP9wBgxPQP",
+      "balance": 2675541475471
+    },
+    {
+      "rank": 22,
+      "address": "7GBcMNrDa2BCETfBBPhdajbUSV51EMXAjm1wNbWvDna",
+      "balance": 450000000002
+    },
+    {
+      "rank": 23,
+      "address": "9C88TiMWVeDt8RfP5vJGXA4TXNqZ1qGNuTxExyG47ob",
+      "balance": 79958003658
+    },
+    {
+      "rank": 24,
+      "address": "13Lp8Vu5cYWpftR3FY1jnJA36m4yAVyNgp4uaoVJPB67",
+      "balance": 38603813640
+    },
+    {
+      "rank": 25,
+      "address": "CYvYxotk6LfXyg53DnMBsW4trMpUv5n3UnHDjcwWkqU",
+      "balance": 31190584174
+    },
+    {
+      "rank": 26,
+      "address": "4wyoXFuBy1T7zcLfvYA43uKUrpdAYbuPZDZLps5Zk8y",
+      "balance": 22428442077
+    },
+    {
+      "rank": 27,
+      "address": "8wPxcLFDwMjnN1i31rSAbUEbqjYH21cD4JVSbeYspxE",
+      "balance": 21489247967
+    },
+    {
+      "rank": 28,
+      "address": "A7Fzu5ttSjbYRd3FYKU8R7pMpAGWPcJHy7eKreEzMjB",
+      "balance": 16861540950
+    },
+    {
+      "rank": 29,
+      "address": "782Hr7xFftCLEJWUErVsq5o1fZBZ8VmCk4jFe5aJxT1",
+      "balance": 12257897200
+    },
+    {
+      "rank": 30,
+      "address": "146BQ4R12MZ4sfTLwH1bYN7kyiwThkzQjrU2kHSFUj5N",
+      "balance": 7488418011
+    },
+    {
+      "rank": 31,
+      "address": "Ctntnh2kY7odU8iwsg4cApJLbkjQSdKaAE9UV1QSzSJ",
+      "balance": 7197808092
+    },
+    {
+      "rank": 32,
+      "address": "795g3aYcsZW41ViSTUGGdBKLz4cX7dSwpFLmGJHmbxL",
+      "balance": 6758095050
+    },
+    {
+      "rank": 33,
+      "address": "1JDGeYxNQMLCfkw4gGjWy3Vykwf4za4ezooygTXfWHP",
+      "balance": 6623849742
+    },
+    {
+      "rank": 34,
+      "address": "AM7jjkYih8nrJ8t39AsPfSSKA453ZSeBYguyo3aNAMB",
+      "balance": 6446555944
+    },
+    {
+      "rank": 35,
+      "address": "14U22hHg9HtTBAmHDCoUD48K3nGoZvM7XQREFpxufzDk",
+      "balance": 5284256151
+    },
+    {
+      "rank": 36,
+      "address": "65XApWXha9GKMJ5PXQqiMLUfHhUP4WMuvkXDFxHA43h",
+      "balance": 5141330000
+    },
+    {
+      "rank": 37,
+      "address": "CJeiruk55HR1QJ84biWLvYXjE3JTFEQbXgAmHdzAQkC",
+      "balance": 4999599436
+    },
+    {
+      "rank": 38,
+      "address": "4uUdvmnYYTsEpNWbAVfnESkt3Wv57VmRG52HSHCRCaH",
+      "balance": 4448153600
+    },
+    {
+      "rank": 39,
+      "address": "14dXab9ucyqcZU5Exxy6FodkbFccVLzTenBhqESxwxcE",
+      "balance": 4392950005
+    },
+    {
+      "rank": 40,
+      "address": "6RL3Kg9t4csgxA94Tf9tfkZK52HZkEYk54iqB1PPw4u",
+      "balance": 4054061897
+    },
+    {
+      "rank": 41,
+      "address": "13p3854o6guuRCM2D2L23fn5X89ywp2sZmixxumaQv8c",
+      "balance": 3815306015
+    },
+    {
+      "rank": 42,
+      "address": "6C7MVdBddCevnDbUkWXjgQwbEZkc4UUjCC2W5kxz3zM",
+      "balance": 3588630587
+    },
+    {
+      "rank": 43,
+      "address": "CJfRw1zwwXf4XXE2TGMvbmWUm2E5ugmB698A1Q3jTQp",
+      "balance": 3525387870
+    },
+    {
+      "rank": 44,
+      "address": "93FFJde97mRgCEMzdZsxYCVGdJVRbKg2r19FwL8hxEz",
+      "balance": 3208588312
+    },
+    {
+      "rank": 45,
+      "address": "12dfhkp79nUkSFKzQ5UoAtmeyy43AcY2KjYHkeEQN4Qt",
+      "balance": 3091039338
+    },
+    {
+      "rank": 46,
+      "address": "6qnfb6VUv8AR4VcU8Kp16GNyrV9axqbQH9JircnLCQ1",
+      "balance": 3003347173
+    },
+    {
+      "rank": 47,
+      "address": "9o14APfRs3i4thgECLD3XFVrz1uix9FEdYWoVHFqpbX",
+      "balance": 3000789236
+    },
+    {
+      "rank": 48,
+      "address": "14LW8rsXgMGenpxgcpfQnBDFqjd5zBXZ4PEmYmH9VKyx",
+      "balance": 2903415077
+    },
+    {
+      "rank": 49,
+      "address": "BDGDw2C5s4sKczv9HA7RhFYWyfi2KHkLjMtJwkoNZDv",
+      "balance": 2736216645
+    },
+    {
+      "rank": 50,
+      "address": "9B3b3xHbHuEWwcVXQdiJu5BZa7QbfnQZgPrbgSoBkfA",
+      "balance": 2562842863
+    }
+  ]
+}
