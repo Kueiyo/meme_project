@@ -1,14 +1,14 @@
 {
   "coin": "HAWK",
-  "anchor_timestamp": 1718987100,
+  "anchor_timestamp": 1719015900,
   "funder_clusters": {
     "HAWKXJXitdzwEopf2AtLtBkHR1WCUjGfZDk1uS8P4yAm": 7,
     "5qR7QeiCDNxmRPK8EXRURdc8KHXmn7NCjKuCFHhBRoDm": 11,
-    "7dGrdJRYtsNR8UYxZ3TnifXGjGc9eRYLq9sELwYpuuUu": 1,
-    "JD6rVaerbyz6wjQ433nrw6bFTgFrp46MiYmi8EtUAfsG": 1,
+    "AxR5o7n98EY6xoNGVhrJ3QGZAS2wRUcbzRnU5Dwbaev8": 1,
+    "2QfBNK2WDwSLoUQRb1zAnp3KM12N9hQ8q6ApwUMnWW2T": 1,
     "FDuYCovq7Djap1M2rrwPGux9U9yC54pk6Do7TEu7Kzsi": 1,
     "6tEzcrPZT6kY8HuWZJ3Roe52bYXyTbLpNJQ3MFLEmXx4": 1,
-    "6eT6tdrCxKLb58B4imgeRJ2eSzYidjdxMrZKGHkNok9w": 1,
+    "84hXmVuuiL4ZFaPd4kpoUtcdivszrepJqF5xDYkuRAUv": 1,
     "HtZ1PZVsVv5F89uo8axS4SUa6q7K55BVqJTf8EAXkHn7": 1,
     "2hvFzqSbHxnKYKL9EpGTzPN7VPToTJHqFxUfjk7RcDyB": 1,
     "APhyMCpYjQ9RdEBn8cs4ifyBXjxAS5JtM3wYpWMJjsY5": 1,
@@ -53,7 +53,7 @@
     {
       "address": "6U8Emd6fCF2xtoPNXFddfkNbQnL8DAciQ9sugv9AQkDZ",
       "tx_scanned": 3000,
-      "first_funder": "7dGrdJRYtsNR8UYxZ3TnifXGjGc9eRYLq9sELwYpuuUu",
+      "first_funder": "AxR5o7n98EY6xoNGVhrJ3QGZAS2wRUcbzRnU5Dwbaev8",
       "source_type": "Private_Wallet"
     },
     {
@@ -101,7 +101,7 @@
     {
       "address": "3ZJrP6kQfMz98FadFfzhykC2F39oucoyLvjced9h9j8L",
       "tx_scanned": 3000,
-      "first_funder": "JD6rVaerbyz6wjQ433nrw6bFTgFrp46MiYmi8EtUAfsG",
+      "first_funder": "2QfBNK2WDwSLoUQRb1zAnp3KM12N9hQ8q6ApwUMnWW2T",
       "source_type": "Private_Wallet"
     },
     {
@@ -137,7 +137,7 @@
     {
       "address": "3kqcfSdjgvNnFVjaqN9J6Y9g6tXXnsdKeNmuwCobhXz3",
       "tx_scanned": 3000,
-      "first_funder": "6eT6tdrCxKLb58B4imgeRJ2eSzYidjdxMrZKGHkNok9w",
+      "first_funder": "84hXmVuuiL4ZFaPd4kpoUtcdivszrepJqF5xDYkuRAUv",
       "source_type": "Private_Wallet"
     },
     {
@@ -256,7 +256,7 @@
     },
     {
       "address": "TZtuWnxQrva7g5WSwC2Ros8c4uBFwySTmyobCJc7985",
-      "tx_scanned": 1,
+      "tx_scanned": 2,
       "first_funder": "6ENHrD5GtyN7UgNJyjd5iNoiVWBLPTq3fzZD4ikb2as2",
       "source_type": "Private_Wallet"
     },

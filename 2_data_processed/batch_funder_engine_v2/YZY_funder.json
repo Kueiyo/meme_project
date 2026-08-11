@@ -1,10 +1,10 @@
 {
   "coin": "YZY",
-  "anchor_timestamp": 1737296280,
+  "anchor_timestamp": 1755741480,
   "funder_clusters": {
     "FTNTD1rkpBZxkBqVfG17VduezXfgtQ6R6VR8sr2CSgNR": 15,
     "BFfvVf1C9tLxA34uZ92Av3c6Uci65gVr3HKueHhPJ2Cg": 2,
-    "GHigB15jr7wZ8GitjD4Hf5naqyUJfMbKa1n1PmSiBhUc": 1,
+    "HPBTiMdMU588DXzKEswxitABHvJBdhogxyDRqjg6T4WD": 1,
     "D5GF2sXkrGWUkL3kyxUeph7XpaKoA2PWxaE9Tkf7s32v": 1,
     "2DNb2Cxe5zCSoMjDy8JiAJAs9gDY6ExKMSkZ4yWf8nha": 1,
     "6XaYFimzaGBZ5Vvnj3TZ565pa6sAjx1HL4MNRkTV6aPi": 1,
@@ -64,7 +64,7 @@
     {
       "address": "7B9apQQARoF3af9RE9PWqZNinUWz7bNw4WnbaHke1udR",
       "tx_scanned": 3000,
-      "first_funder": "GHigB15jr7wZ8GitjD4Hf5naqyUJfMbKa1n1PmSiBhUc",
+      "first_funder": "HPBTiMdMU588DXzKEswxitABHvJBdhogxyDRqjg6T4WD",
       "source_type": "Private_Wallet"
     },
     {

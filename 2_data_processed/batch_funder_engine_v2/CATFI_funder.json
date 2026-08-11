@@ -1,8 +1,8 @@
 {
   "coin": "CATFI",
-  "anchor_timestamp": 1735944180,
+  "anchor_timestamp": null,
   "funder_clusters": {
-    "7VnVRypd6p5yqXrcDm3VQAxQhyXEijvxp2dyCS6vVYNc": 1,
+    "GxDC9e7SP9mzhDo4re5HbpLa2RW7gB9DtmThx4i4pXSq": 1,
     "F7p3dFrjRTbtRp8FRF6qHLomXbKRBzpvBLjtQcfcgmNe": 1,
     "8mzCDvq5JWJh6Cus7XYnnwL2JGCVUXA3bDqaXmzCG5hn": 1,
     "6LdkpjWpkuW2jZUjphu9VmYuVxtD5zD7CLDHDPGuQyom": 1,
@@ -57,7 +57,7 @@
     {
       "address": "2dhAETqbZM7mLMG6wF9W7z8fSdzAGjUmabhBPW86gP7N",
       "tx_scanned": 3000,
-      "first_funder": "7VnVRypd6p5yqXrcDm3VQAxQhyXEijvxp2dyCS6vVYNc",
+      "first_funder": "GxDC9e7SP9mzhDo4re5HbpLa2RW7gB9DtmThx4i4pXSq",
       "source_type": "Private_Wallet"
     },
     {
@@ -74,7 +74,7 @@
     },
     {
       "address": "5JehmufH6DJep8bhWc5bLC6fcaFJuyWU1XG2nt3YcSpw",
-      "tx_scanned": 1,
+      "tx_scanned": 2,
       "first_funder": "6LdkpjWpkuW2jZUjphu9VmYuVxtD5zD7CLDHDPGuQyom",
       "source_type": "Private_Wallet"
     },
@@ -152,7 +152,7 @@
     },
     {
       "address": "1Za6G6oQjuxcGCVxU7i7b8TPKPyPYX1Fv6KHz85o331",
-      "tx_scanned": 17,
+      "tx_scanned": 18,
       "first_funder": "5oE7yzrJiPH8fZ6AoEk4qDEqLwot5CiWMVNrPx5cLSyM",
       "source_type": "Private_Wallet"
     },

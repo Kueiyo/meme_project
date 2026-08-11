@@ -1,8 +1,8 @@
 {
   "coin": "SHAR",
-  "anchor_timestamp": 1729664940,
+  "anchor_timestamp": 1729693740,
   "funder_clusters": {
-    "FxuCNnT2k6tChj8FTpTsQfki3bHDNUc4aYeAzhvhezgv": 1,
+    "HvFdDWS3RqymRAVx1ZdoL2RjiC38r5dtt19Z8op5jqDK": 1,
     "GVEECFdx2LfpXn3EoEwnn8zhoCK23ova9RYo3hDbfYRs": 1,
     "CTc1153pSChEZqWZZaRBgZ6VgBTXYfod9beKnwYSX7gE": 1,
     "6tFZfmfeeETWKMyE5RyQKLqwLHcgXmiu1uU15iMWob6z": 1,
@@ -57,12 +57,12 @@
     {
       "address": "GAVbuErK3VqMwKaxFWvK2cAgqtFyN7qWpSzwA5PuVzSX",
       "tx_scanned": 3000,
-      "first_funder": "FxuCNnT2k6tChj8FTpTsQfki3bHDNUc4aYeAzhvhezgv",
+      "first_funder": "HvFdDWS3RqymRAVx1ZdoL2RjiC38r5dtt19Z8op5jqDK",
       "source_type": "Private_Wallet"
     },
     {
       "address": "8UJ5Ng95dL24HRujBXVMsrqZoQ6cGhGor2ZbkJ6kuRja",
-      "tx_scanned": 3,
+      "tx_scanned": 4,
       "first_funder": "GVEECFdx2LfpXn3EoEwnn8zhoCK23ova9RYo3hDbfYRs",
       "source_type": "Private_Wallet"
     },
@@ -158,7 +158,7 @@
     },
     {
       "address": "4To48vfGpQpFtyCFryWq3ayzdodho1y6wYBDQvz8gAX6",
-      "tx_scanned": 4,
+      "tx_scanned": 6,
       "first_funder": "xPZQUjqbbM4EcGTQ9G5oLFWyEgCMnMiPRAaRdDvCeeH",
       "source_type": "Private_Wallet"
     },
@@ -182,7 +182,7 @@
     },
     {
       "address": "Cbn8TT3sPbt6fRMBeZ5aAvpWZnVtPxUGwaqcVor8xohb",
-      "tx_scanned": 55,
+      "tx_scanned": 67,
       "first_funder": "FARk2pyNDz74jWBUvJL3Zesw6zprgbp3PzRvsYGv5oR6",
       "source_type": "Private_Wallet"
     },
@@ -278,7 +278,7 @@
     },
     {
       "address": "BHrvnmhX5RJwMnKqp87GS8JitEPHD19Ysdz1YufbYewy",
-      "tx_scanned": 13,
+      "tx_scanned": 15,
       "first_funder": "E6ry55ECPkcg4QyEmpiUr2hEkDKA3EWeWqQdVoN1jdrB",
       "source_type": "Private_Wallet"
     },

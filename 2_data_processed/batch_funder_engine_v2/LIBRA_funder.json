@@ -1,8 +1,8 @@
 {
   "coin": "LIBRA",
-  "anchor_timestamp": 1739713500,
+  "anchor_timestamp": 1739742300,
   "funder_clusters": {
-    "6WJfN1fqrEEMSVKnzZkR4vJTMTxBaqvka2KA7aQHJMfF": 1,
+    "HfDkot6tJUJUvARpSDwz82eDZQwpT2tBFDqpwLEnu3hd": 1,
     "9hmafSUimqzb9KHBnhmwJLTQuajzZh43KmWa2nqot4vo": 1,
     "5X1baAuWkoVz3rQgiApKFyyY1D5hCTrmdj7caN3TrEaS": 1,
     "5rkPDK4JnVAumgzeV2Zu8vjggMTtHdDtrsd5o9dhGZHD": 1,
@@ -54,12 +54,12 @@
     {
       "address": "D2AiNgk4KQpSBniJUdNGvPfugNyb8skxbceBQhfBFrwC",
       "tx_scanned": 3000,
-      "first_funder": "6WJfN1fqrEEMSVKnzZkR4vJTMTxBaqvka2KA7aQHJMfF",
+      "first_funder": "HfDkot6tJUJUvARpSDwz82eDZQwpT2tBFDqpwLEnu3hd",
       "source_type": "Private_Wallet"
     },
     {
       "address": "E7JJ9BvxfjSJpvQRPmMXoB3y93iw52sN2CSWYHER8SKD",
-      "tx_scanned": 63,
+      "tx_scanned": 64,
       "first_funder": "9hmafSUimqzb9KHBnhmwJLTQuajzZh43KmWa2nqot4vo",
       "source_type": "Private_Wallet"
     },

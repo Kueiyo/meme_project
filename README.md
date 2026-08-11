@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Meme Coin On-Chain Forensics Toolkit
 ### 迷因幣鏈上籌碼結構與 First Funder 資金溯源分析工具
 
@@ -226,6 +225,7 @@ my_project/
 - `2_data_processed/batch_funder_engine_v1/` 為過渡期產出的孤兒資料夾（沒有任何現行腳本會再讀寫），已搬到 `_archive/batch_funder_engine_v1_stale_output/`，不影響現有分析結果，僅供追溯用。
 - `export_txt_report.py` / `generate_v2_dashboards.py` / `generate_v2_html_reports.py` 曾一度又回到寫死 Windows 絕對路徑、輸出到 `v2_dashboards` 資料夾的舊版寫法（與本 README 記載的行為不符），導致 `3_reports_txt`、`4_reports_img`、`5_reports_html` 底下同時存在 `v2_dashboards`（舊）與 `funder_tracker_dashboards`（新）兩份重複輸出。已重新套用相對路徑 + UTF-8 修正，舊輸出搬到 `_archive/v2_dashboards_stale_output/`。**若之後再次發現這三支腳本跑出 `v2_dashboards` 資料夾，代表又被改回舊版寫法，需要重新修正。**
 - 新增 `generate_v2_spider_web.py`（First Funder 關聯蜘蛛網，pyvis 互動 HTML），原始版本同樣寫死絕對路徑，已比照其餘 B 管線腳本改為相對路徑並加上 UTF-8 guard。
-=======
-# my_project
->>>>>>> 81b6f6ba290f6b9b5dcb73d66e2b6cfeaad9ea6b
+- `batch_funder_engine_v2.py` 的 `parse_tweet_time_to_timestamp()` 用 naive `datetime.timestamp()` 解析 `master_sheet.csv` 標註為 UTC 的推文時間，但該函式實際是用**系統本機時區**換算（本機實測 UTC+8），導致 T=0 錨點比真正的 UTC 時間早了 8 小時；`step4_event_analysis.py` 有一模一樣的問題。已改為 `dt.replace(tzinfo=timezone.utc).timestamp()`，兩處都不再依賴系統時區。
+- `batch_funder_engine_v2.py` 的 `load_master_sheet_anchors()` 原本用寫死的 `block_ranges`（只到 `master_sheet.csv` 第 66 列），已改為動態掃描代幣符號欄位偵測區塊，不再受限於固定列號、也不會在總表改版後悄悄漏掉新增的幣種。**注意**：即使程式碼修好了，`master_sheet.csv` 裡 CATFI、CONDOM 及 BONK/WIF/POPCAT/FARTCOIN/MEW/BOME/PONKE/PNUT/GOAT/MOODENG 這 12 個幣的 `kol_tweet_time_utc` 欄位目前是空的（沒有人工填入推文時間），這是**資料缺口**而非程式問題，這些幣仍會落回「無錨點」的舊行為，需要人工補上 KOL 推文時間才能真正受益於 T=0 錨定。
+- `export_txt_report.py` 有兩個資料正確性 bug：①把 Pipeline B 算出的「資金聚集度」誤填進輸出的「錢包關聯度」欄位，實際上兩者是完全不同的指標；②「類型（1=操盤/0=正常）」原本是拿被檢驗的資金聚集度指標去反推，但這個標籤在 `master_sheet.csv` 裡本來就有人工標註的 ground truth，用指標反推等於循環論證。已改為：錢包關聯度改讀 `metrics_{COIN}.json` 的 `clustering_coefficient`（與 `master_sheet.csv` 手填值相比，JSON 是较新的即時計算結果）；類型改直接讀 `master_sheet.csv` 的人工標註欄。
+- `generate_master_hub.py`（產出 `master_dashboard.html` 側邊欄導覽頁）原本寫死 Windows 絕對路徑，已比照其餘腳本改為相對路徑並加上 UTF-8 guard。

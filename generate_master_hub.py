@@ -1,10 +1,15 @@
+import sys
+if sys.stdout.encoding and sys.stdout.encoding.lower() != "utf-8":
+    sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+    sys.stderr.reconfigure(encoding="utf-8", errors="replace")
+
 import os
 import glob
 
 def generate_master_dashboard():
     # ── 1. 資料夾路徑設定 ─────────────────────────────────────────
-    spider_dir = r"D:\生活\1.參加競賽活動\115\2026鏈上數據讀書會\meme_project\my_project\5_reports_html\v2_spider_graphs"
-    output_dir = r"D:\生活\1.參加競賽活動\115\2026鏈上數據讀書會\meme_project\my_project\5_reports_html"
+    spider_dir = os.path.join("5_reports_html", "v2_spider_graphs")
+    output_dir = "5_reports_html"
     output_html = os.path.join(output_dir, "master_dashboard.html")
 
     if not os.path.exists(spider_dir):

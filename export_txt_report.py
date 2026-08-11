@@ -7,12 +7,26 @@ import pandas as pd
 import os
 import json
 
+def load_master_labels(master_csv="master_sheet.csv"):
+    """讀取 master_sheet.csv 人工標註的『類型』欄（col 3），依代幣符號（col 2）比對"""
+    labels = {}
+    if not os.path.exists(master_csv):
+        return labels
+
+    df = pd.read_csv(master_csv, header=None)
+    for r in range(2, len(df)):
+        sym = df.iloc[r, 2]
+        label = df.iloc[r, 3]
+        if isinstance(sym, str) and sym.strip() and pd.notna(label):
+            labels[sym.strip()] = str(label).strip()
+    return labels
+
 def export_to_txt():
     # ── 1. 檔案讀取與輸出路徑 ─────────────────────────────────────────
-    # v2 的計算結果 (提供: 錢包關聯度、CEX數量)
+    # v2 的計算結果 (提供: 資金聚集度、CEX數量)
     report_file = os.path.join("3_reports_txt", "first_funder_analysis", "final_funder_report_v2.csv")
 
-    # Step 2 的 JSON 存放資料夾 (提供: 前50大戶佔比、早鳥佔比)
+    # Step 2 的 JSON 存放資料夾 (提供: 前50大戶佔比、群聚係數/錢包關聯度、早鳥佔比)
     dir_metrics = "2_data_processed"
 
     # TXT 輸出路徑
@@ -25,6 +39,9 @@ def export_to_txt():
         print(f"❌ 找不到 v2 報告檔，請確認路徑：\n{report_file}")
         return
 
+    # master_sheet.csv 人工標註的「類型」是唯一的 ground truth，不能用被檢驗的指標反推
+    master_labels = load_master_labels()
+
     # ── 2. 讀取 v2 報告並作為主迴圈 ───────────────────────────────────────
     report_df = pd.read_csv(report_file)
     results = []
@@ -33,26 +50,28 @@ def export_to_txt():
 
     for _, row in report_df.iterrows():
         coin = str(row['代幣名稱 (Coin)']).strip()
-        
-        # 從 CSV 抓取計算好的數據
-        clust = float(row['資金聚集度 (%)']) / 100
+
+        # 從 CSV 抓取 Pipeline B 計算好的數據（僅 CEX 資金數，資金聚集度不等於錢包關聯度）
         cex = int(row['CEX (交易所) 資金數'])
-        
-        # 自動判定操盤風險 (設定閾值為 15%，超過則判定為 1)
-        label = "1" if clust >= 0.15 else "0"
+
+        # 「類型」是人工標註的 ground truth，直接讀 master_sheet.csv，不能用被檢驗的指標反推
+        label = master_labels.get(coin, "缺失標註")
 
         # ── 3. 從 JSON 抓取 Step 2 指標 ────────────────────────────────
         json_path = os.path.join(dir_metrics, f"metrics_{coin}.json")
         top50 = "缺失 JSON"
+        clustering = "缺失 JSON"
         early = "缺失 JSON"
-        
+
         if os.path.exists(json_path):
             with open(json_path, "r", encoding="utf-8") as f:
                 data = json.load(f)
                 # 抓取數值並四捨五入到小數點後四位
                 top50_val = data.get("top50_concentration", 0)
+                clustering_val = data.get("clustering_coefficient", 0)
                 early_val = data.get("early_buyers_ratio", 0)
                 top50 = round(float(top50_val), 4)
+                clustering = round(float(clustering_val), 4)
                 early = round(float(early_val), 4)
         else:
             print(f"  ⚠️ 找不到 [{coin}] 的 metrics JSON 檔案，相關欄位將標示為缺失。")
@@ -62,7 +81,7 @@ def export_to_txt():
             'Symbol': coin,
             '類型': label,
             '前50大戶佔比': top50,
-            '錢包關聯度': round(clust, 4),
+            '錢包關聯度': clustering,
             '早鳥佔比': early,
             'CEX地址數': cex
         })

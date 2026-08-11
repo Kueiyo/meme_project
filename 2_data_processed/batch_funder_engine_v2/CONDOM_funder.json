@@ -2,7 +2,7 @@
   "coin": "CONDOM",
   "anchor_timestamp": null,
   "funder_clusters": {
-    "5vV2csjnu3CaUZHRS5HjUGx8zjpSCJRD5AmW3MsLFK7A": 1,
+    "DMT2SPppfsuRKNGp6ZmdZeNynU76hs73YgZC9DHDm2ND": 1,
     "G8Wp42CCZnut5RidUSNebxcpeiLA2Nru2yaM4bs1MUtt": 1,
     "Age9deJTm5LDQpaNcVhPw4NGhbbHcvrkv8MndvfcYsLw": 1,
     "3b9AVwzgiojVU196zDiERvyrZsJSDvZ1MKST4LWRzF47": 1,
@@ -36,7 +36,7 @@
     {
       "address": "5JoqJUkCmVKaixE6nUJPKjR2T1eo2cpTy2sTwxfSGyct",
       "tx_scanned": 3000,
-      "first_funder": "5vV2csjnu3CaUZHRS5HjUGx8zjpSCJRD5AmW3MsLFK7A",
+      "first_funder": "DMT2SPppfsuRKNGp6ZmdZeNynU76hs73YgZC9DHDm2ND",
       "source_type": "Private_Wallet"
     },
     {
@@ -47,7 +47,7 @@
     },
     {
       "address": "7sEhhmqhCcAdhpL3UJVYNqPhpwAvqyAgwEQpP2ZBxCAT",
-      "tx_scanned": 7,
+      "tx_scanned": 8,
       "first_funder": "Age9deJTm5LDQpaNcVhPw4NGhbbHcvrkv8MndvfcYsLw",
       "source_type": "Private_Wallet"
     },

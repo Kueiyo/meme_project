@@ -1,3 +1,8 @@
+import sys
+if sys.stdout.encoding and sys.stdout.encoding.lower() != "utf-8":
+    sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+    sys.stderr.reconfigure(encoding="utf-8", errors="replace")
+
 import os
 import json
 import networkx as nx
@@ -5,8 +10,8 @@ from pyvis.network import Network
 
 def generate_spider_web_graphs():
     # ── 1. 檔案讀取與獨立輸出路徑 ─────────────────────────────────────────
-    input_dir = r"D:\生活\1.參加競賽活動\115\2026鏈上數據讀書會\meme_project\my_project\2_data_processed\batch_funder_engine_v2"
-    output_dir = r"D:\生活\1.參加競賽活動\115\2026鏈上數據讀書會\meme_project\my_project\5_reports_html\v2_spider_graphs"
+    input_dir = os.path.join("2_data_processed", "batch_funder_engine_v2")
+    output_dir = os.path.join("5_reports_html", "v2_spider_graphs")
     os.makedirs(output_dir, exist_ok=True)
 
     if not os.path.exists(input_dir):

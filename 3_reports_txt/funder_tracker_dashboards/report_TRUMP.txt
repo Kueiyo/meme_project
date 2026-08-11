@@ -4,5 +4,5 @@
 ║  籌碼集中度 (Top 50 Concentration)  : 0.9295
 ║  群聚係數 (Clustering Coefficient)  : 0.0400
 ║  早鳥比例 (Early Buyers Ratio)      : 0.0200
-║  交易所錢包數 (CEX Wallet Count)    : 10
+║  交易所錢包數 (CEX Wallet Count)    : 9
 ╚══════════════════════════════════════════╝

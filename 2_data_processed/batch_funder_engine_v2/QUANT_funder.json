@@ -1,8 +1,8 @@
 {
   "coin": "QUANT",
-  "anchor_timestamp": 1732050840,
+  "anchor_timestamp": 1732079640,
   "funder_clusters": {
-    "ESuvjvsQtjuxC4XGsDeMhx8Wp5yjQcCFGncGhupcJbg8": 1,
+    "Gpqrn5MoYUMNNHQAqcUu9tksvNMWfd6GexZBMw3WEhSv": 1,
     "Dq49caKqLa1LamBMDz72uikezuJ4N2Yg4an6WKgabqYr": 1,
     "Fgej4SPuW282TdrQRfizRHAeRasNqCtAWZizL3jDqMdS": 1,
     "CfsbuMYm6fYT7CpVHP2WfDWuAEfzwNg6U8TXUZGHprUX": 1,
@@ -50,7 +50,7 @@
     {
       "address": "GegxSCp7caddfJsLUkPnx68FiWSD2KycbdKCaLUziFNm",
       "tx_scanned": 3000,
-      "first_funder": "ESuvjvsQtjuxC4XGsDeMhx8Wp5yjQcCFGncGhupcJbg8",
+      "first_funder": "Gpqrn5MoYUMNNHQAqcUu9tksvNMWfd6GexZBMw3WEhSv",
       "source_type": "Private_Wallet"
     },
     {
@@ -61,7 +61,7 @@
     },
     {
       "address": "BG7YX7BdRH5tp2uVm119iHn6qVmVS3xEAveQg6wdJTdN",
-      "tx_scanned": 17,
+      "tx_scanned": 25,
       "first_funder": "Fgej4SPuW282TdrQRfizRHAeRasNqCtAWZizL3jDqMdS",
       "source_type": "Private_Wallet"
     },
@@ -79,7 +79,7 @@
     },
     {
       "address": "5eUFiALjXufnWnto1UiUCFSEgvqgBuqBv4ASxTW6f9Yi",
-      "tx_scanned": 13,
+      "tx_scanned": 16,
       "first_funder": "48c86BTWp5YeVcJ4tiVAvwAoLvxSuNFdKWT73f58bRea",
       "source_type": "Private_Wallet"
     },

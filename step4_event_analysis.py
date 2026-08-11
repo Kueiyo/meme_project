@@ -1,7 +1,7 @@
 import requests
 import json
 import os
-from datetime import datetime
+from datetime import datetime, timezone
 from config import API_KEY
 
 def run(coin_name, mint_address, event_time_str, window_minutes, dir_raw, dir_processed):
@@ -10,7 +10,7 @@ def run(coin_name, mint_address, event_time_str, window_minutes, dir_raw, dir_pr
     try:
         # 將字串轉換為 Unix Timestamp (UTC)
         dt = datetime.strptime(event_time_str, "%H:%M · %b %d, %Y")
-        target_ts = int(dt.timestamp())
+        target_ts = int(dt.replace(tzinfo=timezone.utc).timestamp())
     except ValueError:
         print(f"❌ 時間格式解析失敗：{event_time_str}。請確認是否為 'HH:MM · Mmm DD, YYYY' 格式。")
         return

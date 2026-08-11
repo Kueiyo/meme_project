@@ -4,13 +4,12 @@
   "funder_clusters": {
     "4xLpwxgYuPwPvtQjE94RLS4WZ4aD8NJYYKr2AJk99Qdg": 2,
     "GNRHNVgu3WEVFMhvCR7bNukCkpAGZFqJRKyYj6xs6VRj": 1,
-    "3jn81xbBK95zf5A1K4jRMzTicWxKM6X8BzYWzhPtFjuF": 1,
-    "5BCgqYg51CANe8qUMPYWJsqRA4Y8HnyfmvkoJxcEmQfY": 1,
+    "Ahgd7ZczsP6XcWuhsF1Hn7i9W31uHMMPkmffrALL7ers": 1,
+    "5BCgqYg51CANe8qUMPYWJsqRA4Y8HnyfmvkoJxcEmQfY": 2,
     "AEZoku1fLfUz5JYJ3kJ5YVdf3QT1T4RwdggGbuR8Eakd": 1,
-    "35SGPwFuRJpzQdaG1n7onedyW34Bbb5DVTzQbYK7hAmk": 1,
+    "2Trxm1MjSkJeGaYHgAZ4NVbHCkj7vjPKaFtD22sUG5fE": 1,
     "DwdrYTtTWHfnfJBiN2RH6EgPbquDQLjZTfTwpykPEq1g": 1,
-    "DSXPbNfyU6NxZfq4ohYc7FeNk4onMuCwP65pwVTEiVD6": 1,
-    "2UL8hbNaoErAYNePqgQYPP9yDCDRZGWbzKW4krLqkhNL": 1,
+    "67gLX2qjrWAedGGy9D8EwMKvTGZEeMrynJjeneQaDe3c": 1,
     "APhyMCpYjQ9RdEBn8cs4ifyBXjxAS5JtM3wYpWMJjsY5": 3,
     "9obNtb5GyUegcs3a1CbBkLuc5hEWynWfJC6gjz5uWQkE": 2,
     "4NyK1AdJBNbgaJ9EsKz3J4rfeHsuYdjkTPg3JaNdLeFw": 4,
@@ -48,20 +47,20 @@
   "wallet_details": [
     {
       "address": "B7qus6uERedpRjPy7UVHjEJJ4mHS6ydq8Vt1TeGDUiBT",
-      "tx_scanned": 1592,
+      "tx_scanned": 1653,
       "first_funder": "4xLpwxgYuPwPvtQjE94RLS4WZ4aD8NJYYKr2AJk99Qdg",
       "source_type": "Private_Wallet"
     },
     {
       "address": "9pyF7zGCQUY14vbTSYFjK1cb2ycrWbdk5gT7Rg6DDJjY",
-      "tx_scanned": 313,
+      "tx_scanned": 321,
       "first_funder": "GNRHNVgu3WEVFMhvCR7bNukCkpAGZFqJRKyYj6xs6VRj",
       "source_type": "Private_Wallet"
     },
     {
       "address": "AqxW1kYQT5LjfHQyqxQegs3LF4pA6xvqQTB1iXFkhQEB",
       "tx_scanned": 3000,
-      "first_funder": "3jn81xbBK95zf5A1K4jRMzTicWxKM6X8BzYWzhPtFjuF",
+      "first_funder": "Ahgd7ZczsP6XcWuhsF1Hn7i9W31uHMMPkmffrALL7ers",
       "source_type": "Private_Wallet"
     },
     {
@@ -78,32 +77,32 @@
     },
     {
       "address": "FHLWRVWQtJt3mzhcGok9nDtN39ezyFDHuQaWx7Mj3xXc",
-      "tx_scanned": 691,
+      "tx_scanned": 729,
       "first_funder": "AEZoku1fLfUz5JYJ3kJ5YVdf3QT1T4RwdggGbuR8Eakd",
       "source_type": "Private_Wallet"
     },
     {
       "address": "7eoNaWgHkMQrcABabYyvbHzTS3aRyDTRDWVWUARJwfUA",
       "tx_scanned": 3000,
-      "first_funder": "35SGPwFuRJpzQdaG1n7onedyW34Bbb5DVTzQbYK7hAmk",
+      "first_funder": "2Trxm1MjSkJeGaYHgAZ4NVbHCkj7vjPKaFtD22sUG5fE",
       "source_type": "Private_Wallet"
     },
     {
       "address": "71KkksTU5wr2JFsS3rzWgaobNB1xwtAcfxgnn83zzrm",
-      "tx_scanned": 1191,
+      "tx_scanned": 1218,
       "first_funder": "DwdrYTtTWHfnfJBiN2RH6EgPbquDQLjZTfTwpykPEq1g",
       "source_type": "Private_Wallet"
     },
     {
       "address": "DmctNAs1PLC8RwsRpuSWifpeiVLxCYP4FDDyi2FLZDS9",
       "tx_scanned": 3000,
-      "first_funder": "DSXPbNfyU6NxZfq4ohYc7FeNk4onMuCwP65pwVTEiVD6",
+      "first_funder": "67gLX2qjrWAedGGy9D8EwMKvTGZEeMrynJjeneQaDe3c",
       "source_type": "Private_Wallet"
     },
     {
       "address": "CHnJm5xFCNdSmbRjmWpqNGjfi9p5UHtkNUrYgJctN7PG",
       "tx_scanned": 3000,
-      "first_funder": "2UL8hbNaoErAYNePqgQYPP9yDCDRZGWbzKW4krLqkhNL",
+      "first_funder": "5BCgqYg51CANe8qUMPYWJsqRA4Y8HnyfmvkoJxcEmQfY",
       "source_type": "Private_Wallet"
     },
     {
@@ -138,7 +137,7 @@
     },
     {
       "address": "6SDYGWvTyikvPj4tq76gx6dzTLHfWUD8AvcYjG5aqmCV",
-      "tx_scanned": 6,
+      "tx_scanned": 27,
       "first_funder": "5z7gxL5u4jCW9D6acu28LEw4RKTiBSG1EmXbtCX7efg2",
       "source_type": "Private_Wallet"
     },
@@ -150,19 +149,19 @@
     },
     {
       "address": "9SdxaRyPFASmbNagiK7PHD5Aw9qgcoTByE3UqjueMvFp",
-      "tx_scanned": 755,
+      "tx_scanned": 761,
       "first_funder": "APhyMCpYjQ9RdEBn8cs4ifyBXjxAS5JtM3wYpWMJjsY5",
       "source_type": "Private_Wallet"
     },
     {
       "address": "6MsL1HPehWZiqBehJv2mKmXGmkXeNxW35aFJkopav4oP",
-      "tx_scanned": 174,
+      "tx_scanned": 178,
       "first_funder": "HWEzNoJBEwJkqt1ddWvmWLc7pg66rc6TGCS9Veajjin7",
       "source_type": "Private_Wallet"
     },
     {
       "address": "GovQz38fpNyvU7YW9gLndZDpFwP4qTqiGb1mJxXeRk9U",
-      "tx_scanned": 125,
+      "tx_scanned": 162,
       "first_funder": "28RWPC6XPxSxUVjd27KiNRtcHVxKtd6cjms7eBcxiqdV",
       "source_type": "Private_Wallet"
     },
@@ -222,7 +221,7 @@
     },
     {
       "address": "6Q1hA5xjQht9Fr6XJyduqA9tHXpjUDFPh1TcUtJrumS",
-      "tx_scanned": 1113,
+      "tx_scanned": 1116,
       "first_funder": "MfDuWeqSHEqTFVYZ7LoexgAK9dxk7cy4DFJWjWMGVWa",
       "source_type": "Private_Wallet"
     },

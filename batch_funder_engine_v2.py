@@ -28,7 +28,7 @@ import asyncio
 import aiohttp
 import random
 import re
-from datetime import datetime
+from datetime import datetime, timezone
 import pandas as pd
 from config import API_KEY
 
@@ -70,11 +70,11 @@ def parse_tweet_time_to_timestamp(t_str):
                 date_clean = date_part.replace('年', '-').replace('月', '-').replace('日', '')
                 dt_str = f"{date_clean} {hour:02d}:{minute:02d}:00"
                 dt = datetime.strptime(dt_str, "%Y-%m-%d %H:%M:%S")
-                return int(dt.timestamp())
+                return int(dt.replace(tzinfo=timezone.utc).timestamp())
             else:
                 dt_str = f"{date_part} {hour:02d}:{minute:02d}:00"
                 dt = datetime.strptime(dt_str, "%b %d, %Y %H:%M:%S")
-                return int(dt.timestamp())
+                return int(dt.replace(tzinfo=timezone.utc).timestamp())
     except Exception:
         pass
     return None
@@ -87,24 +87,24 @@ def load_master_sheet_anchors():
     
     df = pd.read_csv(master_csv, header=None)
     token_anchors = {}
-    
-    # 區塊定義範圍
-    block_ranges = [
-        ("HAWK", 3, 11), ("LIBRA", 12, 17), ("SHAR", 18, 22),
-        ("QUANT", 23, 26), ("TRUMP", 27, 34), ("MELANIA", 35, 46),
-        ("YZY", 47, 55), ("M3M3", 56, 63), ("CATFI", 64, 64), ("CONDOM", 65, 66)
-    ]
-    
-    for sym, start_r, end_r in block_ranges:
+
+    # 動態偵測區塊：col 2 (token_symbol) 有值代表新幣種區塊開始，
+    # 區塊往下延伸到下一個有 symbol 的列為止（列 0、1 是標題列，從列 2 開始掃）。
+    symbol_rows = [r for r in range(2, len(df)) if isinstance(df.iloc[r, 2], str) and df.iloc[r, 2].strip()]
+
+    for i, start_r in enumerate(symbol_rows):
+        sym = df.iloc[start_r, 2].strip()
+        end_r = symbol_rows[i + 1] - 1 if i + 1 < len(symbol_rows) else len(df) - 1
+
         timestamps = []
-        for r in range(start_r, min(end_r + 1, len(df))):
+        for r in range(start_r, end_r + 1):
             t_val = df.iloc[r, 9] # col 9 is kol_tweet_time_utc
             ts = parse_tweet_time_to_timestamp(t_val)
             if ts:
                 timestamps.append(ts)
         if timestamps:
             token_anchors[sym] = min(timestamps) # 取最早的一篇作為 T=0
-            
+
     return token_anchors
 
 async def fetch_with_retry(session, payload, max_retries=5):
